@@ -13,9 +13,8 @@ public class HomeSteps {
 
     @Given("^user searches for (.*) movie$")
     public void user_searches_for_movie(String movieName) {
-        driver.findElement ( By.id ( homeUI.getSearchField () ) ).sendKeys ( movieName );
-        driver.findElement ( By.xpath ( homeUI.getSearchButton () ) ).click ();
-
+        driver.findElement ( By.id ( homeUI.SEARCH_FIELD ) ).sendKeys ( movieName );
+        driver.findElement ( By.xpath ( homeUI.SEARCH_BUTTON ) ).click ();
     }
 
     @Given("^search results are displayed$")

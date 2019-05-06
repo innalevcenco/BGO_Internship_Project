@@ -9,23 +9,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class StepHooks {
 
-    WebDriver driver;
+    public static WebDriver driver = null;
     ConfigFileReader configFileReader;
 
     public StepHooks() {
 
     }
 
-//    public WebDriver getDriver() {
-//        return driver;
-//    }
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    public static void setDriver(WebDriver driver) {
+        StepHooks.driver = driver;
+    }
 
     @Before
     public void launchChromeDriver() {
         configFileReader = new ConfigFileReader ();
         System.setProperty ( configFileReader.getDriverString (), configFileReader.getDriverPath () );
-        driver = new ChromeDriver ();
-        driver.manage ().window ().maximize ();
+        if (configFileReader.getDriverPath ().contains ( "chrome" )) {
+            setDriver ( new ChromeDriver () );
+        }
+        getDriver().manage ().window ().maximize ();
     }
 
     @After
@@ -41,11 +47,11 @@ public class StepHooks {
 
 
     public void perform_Search(String search) {
-        driver.navigate ().to ( configFileReader.getWebSiteUrl () + "/?s=" + search + "&post_type=product" );
+        driver.navigate ().to ( configFileReader.getHomeUrl () + "/?s=" + search + "&post_type=product" );
     }
 
     public void navigateTo_HomePage() {
-        driver.get ( configFileReader.getWebSiteUrl () );
+        driver.get ( configFileReader.getHomeUrl () );
     }
 
 //    public StepHooks(WebDriver driver) {

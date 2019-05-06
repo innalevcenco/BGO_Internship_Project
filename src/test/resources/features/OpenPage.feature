@@ -5,14 +5,14 @@ Feature: Web searching
 
   @test
   Scenario Outline: The new added trailer movie is displayed in the favorite list
-    Given user searches for <Divergent> movie
-    And search results are displayed
+    Given user searches for <title> movie
+    And search results are  displayed
     When user adds last search film in favorite list
     Then new added film is displayed in the list
     Examples:
-      | Divergent |
-      | Lost      |
-      | Beast     |
+      | title |
+      | Lost  |
+#      | Beast |
 
   Scenario: New comment is added to a specified movie
     Given user searches for a film by filling all fields from Расширенный поиск

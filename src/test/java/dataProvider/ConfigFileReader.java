@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigFileReader {
-    private Properties properties;
-    private final String propertyFilePath = "src/test/java/configs//Configuration.properties";
+    private static Properties properties;
+    private static final String propertyFilePath = "configs/Configuration.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
@@ -27,28 +27,28 @@ public class ConfigFileReader {
         }
     }
 
-    public String getDriverPath() {
+    public static String getDriverPath() {
         String driverPath = properties.getProperty ( "driverPath" );
         if (driverPath != null) return driverPath;
-        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file." );
+        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file" );
     }
 
-    public String getDriverString() {
+    public static String getDriverString() {
         String driverString = properties.getProperty ( "driverString" );
         if (driverString != null) return driverString;
-        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file." );
+        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file" );
     }
 
-    public long getImplicitlyWait() {
+    public static long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty ( "implicitlyWait" );
         if (implicitlyWait != null) return Long.parseLong ( implicitlyWait );
-        else throw new RuntimeException ( "implicitlyWait not specified in the Configuration.properties file." );
+        else throw new RuntimeException ( "implicitlyWait not specified in the Configuration.properties file" );
     }
 
-    public String getWebSiteUrl() {
+    public static String getHomeUrl() {
         String url = properties.getProperty ( "url" );
         if (url != null) return url;
-        else throw new RuntimeException ( "url not specified in the Configuration.properties file." );
+        else throw new RuntimeException ( "url not specified in the Configuration.properties file" );
     }
 
 }
