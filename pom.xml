@@ -65,6 +65,11 @@
             <version>3.141.59</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ru.stqa.selenium</groupId>
+            <artifactId>webdriver-expected-conditions</artifactId>
+            <version>1.0.52</version>
+        </dependency>
     </dependencies>
 
 </project>
