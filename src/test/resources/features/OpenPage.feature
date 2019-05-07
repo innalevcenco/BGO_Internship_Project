@@ -3,7 +3,7 @@ Feature: Web searching
   Background:
     Given the user logs in
 
-  @test
+
   Scenario Outline: The new added trailer movie is displayed in the favorite list
     Given user searches for <title> movie
     And search results are  displayed
