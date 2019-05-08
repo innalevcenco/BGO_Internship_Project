@@ -18,7 +18,7 @@ public class HomeSteps {
 //        configFileReader = new ConfigFileReader();
 //    }
 
-    @Given("^user searches for (.*) movie$")
+    @Given("^user searches for '(.*)' movie$")
     public void user_searches_for_movie(String movieName) {
         driver.findElement(By.id(homeUI.SEARCH_FIELD)).sendKeys(movieName);
         driver.findElement(By.xpath(homeUI.SEARCH_BUTTON)).click();

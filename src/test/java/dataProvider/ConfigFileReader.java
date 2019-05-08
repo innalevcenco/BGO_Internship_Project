@@ -26,17 +26,17 @@ public class ConfigFileReader {
         }
     }
 
-    public static String getDriverPath() {
-        String driverPath = properties.getProperty ( "driverPath" );
-        if (driverPath != null) return driverPath;
-        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file" );
+    public static String getBrowserName() {
+        String browserName = properties.getProperty ( "browserName" );
+        if (browserName != null) return browserName;
+        else throw new RuntimeException ( "driverName not specified in the Configuration.properties file" );
     }
 
-    public static String getDriverString() {
-        String driverString = properties.getProperty ( "driverString" );
-        if (driverString != null) return driverString;
-        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file" );
-    }
+//    public static String getDriverString() {
+//        String driverString = properties.getProperty ( "driverString" );
+//        if (driverString != null) return driverString;
+//        else throw new RuntimeException ( "driverPath not specified in the Configuration.properties file" );
+//    }
 
 
 }

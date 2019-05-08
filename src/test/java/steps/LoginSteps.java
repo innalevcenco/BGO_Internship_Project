@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import hooks.StepHooks;
 import org.openqa.selenium.WebDriver;
@@ -18,5 +19,13 @@ public class LoginSteps {
         loginPage.buttonClick(loginPage.usernameEnterButton());
         loginPage.setPassword(password);
         loginPage.buttonClick(loginPage.passwordEnterButton());
+    }
+    @Given("^bla-bla$")
+            public void bla(){
+        System.out.println("BLA-BLA");
+            }
+
+    @And("^user chooses movie$")
+    public void userChoosesMovie() {
     }
 }
