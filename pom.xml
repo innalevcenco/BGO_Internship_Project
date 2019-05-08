@@ -60,16 +60,17 @@
             <version>3.141.59</version>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>3.141.59</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>ru.stqa.selenium</groupId>
             <artifactId>webdriver-expected-conditions</artifactId>
             <version>1.0.52</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.0.0-alpha-1</version>
+        </dependency>
+
     </dependencies>
 
 </project>
