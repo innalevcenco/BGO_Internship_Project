@@ -39,5 +39,4 @@ public class StepHooks {
         driver.close();
         driver.quit();
     }
-
 }
