@@ -3,31 +3,32 @@ package hooks;
 import browser.Driver;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
+
 public class StepHooks {
 
-    private WebDriver driver = null;
+    @Setter
+    @Getter
+    private static WebDriver driver;
 
     public StepHooks() {
-
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
-    }
 
     @Before
     public void launchChromeDriver() {
-        setDriver(Driver.initializeDriver());
-        getDriver().manage().window().maximize();
+        setDriver ( Driver.initializeDriver( ));
+        getDriver ().manage ().window ().maximize ();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
     public void afterScenario() {
-        getDriver().close();
+//        driver.manage().deleteAllCookies();
+        getDriver ().close ();
     }
 }

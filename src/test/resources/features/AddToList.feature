@@ -1,27 +1,27 @@
 Feature: Add list and movies in the lists
 
   Background:
-    Given Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
-
+    Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
   @test
-  Scenario Outline: The new added trailer movie is displayed in the I will watch list
+    Scenario Outline: The new added trailer movie is displayed in the I will watch list
     Given home page is open
     When user searches for <title> movie
-    And user clicks on 'search' button
-    Then search results are  displayed
-    When user clicks on the first link 'movie'
+    And user clicks on search button
+    Then search results are displayed
+    When user saves th title of the first displayed movie
+    When user clicks on the first link movie
     Then movie details are displayed
-    When user clicks on 'heart' button for adding the movie in 'Буду смотреть' list
-    Then movie is saved in 'Любимые фильмы' list
-    When clicks on 'profile' button
-    And clicks on 'Фильмы' button
-    Then new added film is displayed first in the 'Любимые фильмы' list
+    When user clicks on will watch button for adding the movie in Буду смотреть list
+    Then movie is saved in Буду смотреть list
+    When user clicks on profile button
+    And user clicks on Фильмы button
+    Then new added film is displayed first in the Буду смотреть list
     Examples:
       | title |
       | Lost  |
       | Beast |
 
-
+  @test
   Scenario: Create new list with seen movies and add check mark for rated or viewed movies to be deleted
     Given home page is open
     When user clicks on 'Буду смотреть' button on the top, at the right side
