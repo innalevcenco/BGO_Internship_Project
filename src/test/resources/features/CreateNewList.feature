@@ -1,6 +1,21 @@
-@UI @test
-Feature: User login on kinopoisk web-site
-
-  Background: Authentication
-    Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'Idiotin@153' password
-
+#Feature: Create new list
+#
+#  Background: Authentication
+#    Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'Idiotin@153' password
+#
+#  @test
+#  Scenario: Create new list with seen movies and add check mark for rated or viewed movies to be deleted
+#    Given home page is open
+#    When user clicks on 'Буду смотреть' button on the top, at the right side
+#    And user clicks on 'новая папка' field  and write the folder name 'the best movies'
+#    Then the new folder is displayed
+#    When user clicks on 'the best movies' folder
+#    And user clicks on search field and searches for The Intouchables movie
+#    And choose wanted movie
+#    Then specified movie is displayed
+#    When user checks the check mark for adding movie in 'the best movies' list
+#    And user checks the check mark for'автоматически удалять из папки оцененные или просмотренные фильмы'
+#    And user clicks on 'cохранить' button
+#    Then all modifications are saved in 'the best movie' folder
+#
+#

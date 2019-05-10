@@ -48,4 +48,6 @@ public class LoginPage {
         WebElement element = driver.findElement(By.xpath(value));
         element.click();
     }
+
+
 }
