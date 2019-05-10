@@ -4,6 +4,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.CommonActions;
 import pages.HomePage;
 import pages.MessagesPage;
@@ -53,38 +58,25 @@ public class MessagesSteps extends CommonActions {
     @Then("^user is redirected on the 'Send Message' page$")
     public void userIsRedirectedOnTheSendMessagePage() {
         waitVisibility(MessagesPage.getNewMessageText());
-        assertEqualsURL(MessagesPage.getSendMessagePageURL(), driver.getCurrentUrl());
+//        assertEqualsURL(MessagesPage.getSendMessagePageURL(), driver.getCurrentUrl());
         System.out.println("Send Message page is displayed");
     }
-    @When("^user enters '(.*)'$")
-    public void userEntersReceivers(String text) {
-        writeText(MessagesPage.getReceiver(),text);
-        System.out.println("Step PASSED");
-    }
 
-    @When("^user enters '(.*)', '(.*)' and '(.*)'$")
-    public void userEntersReceiversThemeAndMessage(String receiver, String theme, String message) {
-        writeText(MessagesPage.getReceiversField(), receiver);
-        writeText(MessagesPage.getThemeField(), theme);
+    @When("^user enters '(.*)' and '(.*)'$")
+    public void userEntersReceivers(String receiver, String message) {
+        writeText(MessagesPage.getReceiver(),receiver);
         writeText(MessagesPage.getMessageField(), message);
-        //TODO need assert
-        System.out.println("Fild are populated");
+        System.out.println("Step PASSED");
     }
 
     @And("^user clicks on 'Send' button$")
     public void userClicksOnSendButton() {
         click(MessagesPage.getSendButton());
-        System.out.println("Message is sent");
+        System.out.println("Button is clicked");
     }
 
-    @Then("^'(.*)' is displaeyed on current page$")
-    public void messageIsDisplaeyedOnCurrentPage() {
+    @Then("^'(.*)' is displayed on current page$")
+    public void messageIsDisplaeyedOnCurrentPage(String text) {
         System.out.println("Message is displayed");
     }
 }
-
-
-
-
-
-

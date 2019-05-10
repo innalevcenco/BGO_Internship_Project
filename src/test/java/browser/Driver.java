@@ -21,7 +21,7 @@ public class Driver {
 
     public static WebDriver initializeDriver() {
         ConfigFileReader reader = new ConfigFileReader();
-        if (driver == null) {
+//        if (driver == null) {
             if (reader.getBrowserName().equalsIgnoreCase("chrome")) {
                 System.setProperty(CHROME_PROPERTY, CHROME_PATH);
                 driver = new ChromeDriver();
@@ -32,7 +32,7 @@ public class Driver {
                 System.out.println("driver details are not specified in the Configuration.properties file");
                 driver = new EdgeDriver();
             }
-        }
+//        }
         return driver;
     }
 }

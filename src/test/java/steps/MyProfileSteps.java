@@ -8,7 +8,7 @@ package steps;
 
 public class MyProfileSteps {
 
-    @Given("^new added film is displayed first in the (Буду смотреть) list$")
+    @Given("^new added film is displayed first in the Will watch list$")
     public void checkNewAddedFilmIsDisplayed() {
 //        Assert.assertTrue ( getText ( UserFolders.getFirstDisplayedMovie()).equals ( movieSearchSteps.movieTitle ) );
     }

@@ -6,7 +6,8 @@ public class AdvancedFilterPage extends CommonActions {
     private static final String resultPageURL = "https://www.kinopoisk.ru/lists/m_act[country]/1/";
     private static final String countryFiled = "//*[@id='country']";
     private static final String actorField = "//*[@id='formSearchMain']/input[8]";
-    private static final String searchButton = "//*[@id='formSearchMain']/input[11]";
+    private static final String searchButton = "//*[@id=\"partial_component__header-topline\"]/div/div/div[1]/div/div[1]/div[2]/form/div/div[1]/button";
+
     private static final String resultOfSearchBlock = "//*[@id='block_left_pad']/div/div[2]";
 
     public static String getCountryFiled() {
