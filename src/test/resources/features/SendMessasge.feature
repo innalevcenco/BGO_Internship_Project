@@ -12,10 +12,9 @@
 #    Then user is redirected to the inbox page
 #    When user clicks on the 'new message' link
 #    Then user is redirected on the 'Send Message' page
-#    When user enters '<receivers>'
-##    And '<theme>' and '<message>'
-##    And user clicks on 'Send' button
-##    Then '<message>' is displaeyed on current page
+#    When user enters '<receivers>' and '<message>'
+#    And user clicks on 'Send' button
+#    Then '<message>' is displayed on current page
 #    Examples:
-#      | receivers | theme            | message      |
-#      | ilevcenco | theme of message | message text |
+#      | receivers      | message      |
+#      | ariadnaciuvaga | message text |

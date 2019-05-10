@@ -1,4 +1,5 @@
-#@UI @testFeature: Test of searching functionality
+#@UI @test
+#Feature: Test of searching functionality
 #
 #  Background:
 #    Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'Idiotin@153' password
@@ -7,7 +8,7 @@
 #    Given user is on the home page
 #    When user clicks on 'Advanced Filter' button
 #    Then 'Advanced filter' page is displayed
-#    When user fills 'Actor' field with '<actor>' name
+#    When user fills field with '<actor>' name
 #    And user select '<country>' country
 #    And user clicks on the 'Search' button
 #    Then the list of the films is displayed
@@ -17,11 +18,10 @@
 #    Then 'Favorites films' button is marked
 #    Examples:
 #      | actor             | country |
-#      | Robert Downey Jr. | USA     |
-#      | María Valverde    | Spain   |
+#      | Robert Downey Jr. | 3       |
+#      | María Valverde    | 15      |
 #
-#
-#  Scenario Outline: User search the actor and add them to the actore list
+#  Scenario Outline: User search the actor and add them to the actor list
 #    Given user is on the home page
 #    When user fills 'Search' field with <actor> name
 #    And user clicks on 'Search' button

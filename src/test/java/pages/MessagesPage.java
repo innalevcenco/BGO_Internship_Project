@@ -49,10 +49,8 @@ public class MessagesPage extends CommonActions{
     public static String getReceiver() {
         return receiver;
     }
+
 }
-
-
-
 
 
 

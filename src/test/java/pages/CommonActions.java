@@ -3,6 +3,7 @@ package pages;
 import hooks.StepHooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,18 +11,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class CommonActions {
 
     public WebDriver driver = StepHooks.getDriver();
-    //    public WebDriverWait wait;
+//    public WebDriverWait wait;
+
     //TODO like driver
     public WebDriverWait wait = new WebDriverWait(driver, 15);
 
-    //    //Constructor
+//    //Constructor
 //    public CommonActions(WebDriver driver, WebDriverWait wait) {
 //        this.driver = driver;
 //        this.wait = wait;
 //    }
+
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
     }
 
     //Click Method
@@ -36,11 +39,19 @@ public abstract class CommonActions {
         driver.findElement(By.xpath(elementBy)).sendKeys(text);
     }
 
+    //Enter
+    public void enter(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
+    }
+
+
     //Read Text
     public String readText(String elementBy) {
         waitVisibility(elementBy);
         return driver.findElement(By.xpath(elementBy)).getText();
     }
+
 
 //    //Read Text
 //    public String getElementByXpath(String elementBy) {

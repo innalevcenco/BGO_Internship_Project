@@ -6,14 +6,11 @@ Feature: Add list and movies in the lists
   @test
   Scenario Outline: The new added trailer movie is displayed in the I will watch list
     Given home page is open
-    When user searches for <title> movie
-    And user clicks on search button
-    Then search results are displayed
-    When user saves the title of the first displayed movie
-    When user clicks on the first link movie
+    When user searches for <title>
+    And user clicks on the Search button
     Then movie details are displayed
-    When user clicks on will watch button for adding the movie in Буду смотреть list
-    Then movie is saved in Буду смотреть list
+    When user clicks on will watch button
+    Then movie is saved in will watch list
     When user clicks on profile button
     And user clicks on Фильмы button
     Then new added film is displayed first in the Буду смотреть list
@@ -21,7 +18,7 @@ Feature: Add list and movies in the lists
       | title |
       | Lost  |
       | Beast |
-##
+#
 #  @test
 #  Scenario: Create new list with seen movies and add check mark for rated or viewed movies to be deleted
 #    Given home page is open

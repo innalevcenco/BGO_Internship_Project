@@ -39,16 +39,21 @@ public class MovieSearchSteps extends CommonActions {
 //        }
 //    }
 
-    @When("^user clicks on (will watch) button for adding the movie in (Буду смотреть) list$")
+    @When("^user clicks on (will watch) button$")
     public void add_movie_into_willWatch_list() {
         click ( MovieSearchResultPages.getWillWatchButton());
     }
 
     //    should add an assert for checking that result is right.
-    @Then("^movie is saved in (Буду смотреть) list$")
+    @Then("^movie is saved in (will watch) list$")
     public void movie_is_added_in_list() {
         assertThat ( "User is warned if new movie is added in the list", "Lost", is ( "Lost" ) );
 
     }
 
+    @Then("^movie details are displayed$")
+    public void movieDetailsAreDisplayed() {
+        Assert.assertEquals("", "");
+
+    }
 }
