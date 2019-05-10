@@ -1,5 +1,6 @@
 package pages;
 
+import hooks.StepHooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +8,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class CommonActions {
-    public WebDriver driver;
-    public WebDriverWait wait;
+
+    public WebDriver driver = StepHooks.getDriver();
+//    public WebDriverWait wait;
+
+    //TODO like driver
+    public WebDriverWait wait = new WebDriverWait(driver, 15);
 
 //    //Constructor
 //    public CommonActions(WebDriver driver, WebDriverWait wait) {
@@ -16,73 +21,43 @@ public abstract class CommonActions {
 //        this.wait = wait;
 //    }
 
-    public CommonActions() {
-    }
-
     //Wait Wrapper Method
-    public void waitVisibility(By elementBy) {
-        wait.until ( ExpectedConditions.visibilityOfAllElementsLocatedBy ( elementBy ) );
-    }
-
-    //Navigate to
-    public void navigateTo(String url) {
-        driver.navigate ().to ( url );
+    public void waitVisibility(String elementBy) {
+    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
     }
 
     //Click Method
-    public void clickOn(String elementBy) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        driver.findElement ( By.xpath ( elementBy ) ).click ();
-    }
-
-    //Get text Method
-    public String getText(String elementBy) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        String text = driver.findElement ( By.xpath ( elementBy ) ).getText ();
-        return text;
-    }
-
-    //Click Method
-    public void getElementByXpath(String elementBy) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        driver.findElement ( By.xpath ( elementBy ) );
-    }
-
-    //find Id element and Click
-    public void findElementByIdAndClick(String elementBy) {
-        waitVisibility ( By.id ( elementBy ) );
-        driver.findElement ( By.id ( elementBy ) ).click ();
+    public void click(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).click();
     }
 
     //Write Text
     public void writeText(String elementBy, String text) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        driver.findElement ( By.xpath ( elementBy ) ).sendKeys ( text );
-    }
-
-    // Enter
-    public void findElementByIdAndEnter(String elementBy, String text) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        driver.findElement ( By.xpath ( elementBy ) ).sendKeys ( text );
+        waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).sendKeys(text);
     }
 
     //Read Text
     public String readText(String elementBy) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        return driver.findElement ( By.xpath ( elementBy ) ).getText ();
+        waitVisibility(elementBy);
+        return driver.findElement(By.xpath(elementBy)).getText();
+    }
+
+    //IsDisplayed
+    public void isDisplayed(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).isDisplayed();
+        Assert.assertTrue(driver.findElement(By.xpath(elementBy)).isDisplayed());
     }
 
     //Asserts
     public void assertEqualsElements(String elementBy, String expectedText) {
-        waitVisibility ( By.xpath ( elementBy ) );
-        Assert.assertEquals ( readText ( elementBy ), expectedText );
+        waitVisibility(elementBy);
+        Assert.assertEquals(readText(elementBy), expectedText);
     }
 
     public void assertEqualsURL(String currentURL, String expectedURL) {
-        Assert.assertEquals ( currentURL, expectedURL );
+        Assert.assertEquals(currentURL, expectedURL);
     }
-
-//WebElement webElement = wait.until ( ExpectedConditions.elementToBeClickable ( utilities.getWebElementByName ( page , "closeButton" ) ) );
-//wait.until(ExpectedConditions.urlContains("SearchResults"));
 }
-

@@ -18,7 +18,6 @@ public class StepHooks {
     public StepHooks() {
     }
 
-
     @Before
     public void launchChromeDriver() {
         setDriver ( Driver.initializeDriver( ));
@@ -30,5 +29,6 @@ public class StepHooks {
     public void afterScenario() {
 //        driver.manage().deleteAllCookies();
         getDriver ().close ();
+        getDriver().quit();
     }
 }
