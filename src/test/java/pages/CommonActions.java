@@ -4,8 +4,11 @@ import hooks.StepHooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.MoviePage;
+import pages.FavouritePage;
 
 public abstract class CommonActions {
 
@@ -55,6 +58,23 @@ public abstract class CommonActions {
     public void assertEqualsElements(String elementBy, String expectedText) {
         waitVisibility(elementBy);
         Assert.assertEquals(readText(elementBy), expectedText);
+    }
+
+    public boolean checkIfMovieAddedToFavouriteList(){
+        String headerMovie1= driver.findElement(By.xpath(MoviePage.getMovieTitle())).getText();
+
+        driver.findElement(By.xpath(MoviePage.getFavoritesListButton())).click();
+        waitVisibility(FavouritePage.getFirstMovieFromList());
+        driver.findElement(By.xpath(FavouritePage.getFirstMovieFromList())).click();
+        waitVisibility(MoviePage.getMovieTitle());
+
+        String headerMovie2=driver.findElement(By.xpath(MoviePage.getMovieTitle())).getText();
+
+        if (headerMovie1.equals(headerMovie2)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void assertEqualsURL(String currentURL, String expectedURL) {
