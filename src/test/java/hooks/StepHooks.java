@@ -28,7 +28,12 @@ public class StepHooks {
     @After
     public void afterScenario() {
 //        driver.manage().deleteAllCookies();
-        getDriver ().close ();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        getDriver ().close();
         getDriver().quit();
     }
 }

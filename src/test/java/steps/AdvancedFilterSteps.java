@@ -14,7 +14,7 @@ public class AdvancedFilterSteps extends CommonActions {
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
-        click(HomePage.getSearchButton());
+        click(HomePage.getAdvancedSearchButton());
         System.out.println("User clicks on search button");
     }
 
@@ -33,12 +33,16 @@ public class AdvancedFilterSteps extends CommonActions {
 
     //TODO need to change
     @And("^user select '(.*)' country")
-    public void userSelectCountryCountry(int text) {
+    public void userSelectsCountry(String text) {
+        click(AdvancedFilterPage.getCountryFiled());
         WebElement dropdown = driver.findElement(By.xpath("//*[@id='country']"));
+
 //        //*[@id="country"]/option[3]
         Select select = new Select(dropdown);
-        select.selectByValue(String.valueOf(text));
+//        select.selectByValue(String.valueOf(text));
+        select.selectByVisibleText("США");
     }
+
 
     @And("^user clicks on the 'Search' button$")
     public void userClicksOnTheSearchButton() {

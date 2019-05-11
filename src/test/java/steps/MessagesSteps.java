@@ -1,28 +1,15 @@
 package steps;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.CommonActions;
 import pages.HomePage;
 import pages.MessagesPage;
 
 public class MessagesSteps extends CommonActions {
-
-    @Given("^user is on the home page$")
-    public void verificationLocation() {
-//        driver.get(HomePage.getHomePageLocator());
-        waitVisibility(HomePage.getLogOutButton());
-//        waitVisibility(HomePage.getLogInButton());
-        assertEqualsURL(HomePage.getHomePage(), driver.getCurrentUrl());
-        System.out.println("Home page is displayed");
-    }
 
     @When("^user clicks on 'Logo' button$")
     public void userClicksOnLogoButton() {
@@ -54,7 +41,7 @@ public class MessagesSteps extends CommonActions {
         click(MessagesPage.getNewMessageLink());
         System.out.println("New message link is clicked");
     }
-
+//TODO need assert
     @Then("^user is redirected on the 'Send Message' page$")
     public void userIsRedirectedOnTheSendMessagePage() {
         waitVisibility(MessagesPage.getNewMessageText());
@@ -71,12 +58,20 @@ public class MessagesSteps extends CommonActions {
 
     @And("^user clicks on 'Send' button$")
     public void userClicksOnSendButton() {
-        click(MessagesPage.getSendButton());
+        waitVisibility(MessagesPage.getSendButton());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath(MessagesPage.getSendButton())).click();
         System.out.println("Button is clicked");
     }
 
     @Then("^'(.*)' is displayed on current page$")
     public void messageIsDisplaeyedOnCurrentPage(String text) {
-        System.out.println("Message is displayed");
+
+        Assert.assertTrue(isTextPresent(text));
+        System.out.println("Message "+text+" is displayed");
     }
 }

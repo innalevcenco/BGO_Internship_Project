@@ -1,9 +1,41 @@
 package steps;
 
-public class PersonalizedPageSteps {
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.junit.Assert;
+import pages.CommonActions;
+import pages.PersonalizedPage;
 
-    private static final String addToCategoryButton = "//*[@id='div_mustsee_main']/div/div/div/span[2]";
-    private static final String listWithCategories = "//*[@id='div_mustsee_main']/div/div/div/div/div";
-    private static final String addToCategoryActorsButton = "//*[@id='div_mustsee_main']/div/div/div/div/dl/dd[2]";
-//    private static final String addCategoryField = "";
+public class PersonalizedPageSteps extends CommonActions {
+
+    @Then("^the list of actors is displayed$")
+    public void theListOfActorsIsDisplayed() {
+        waitVisibility(PersonalizedPage.getBlockWithResultSearch());
+        Assert.assertTrue(isTextPresent("Скорее всего, вы ищете:"));
+        System.out.println("the list of actors is displayed");
+    }
+
+    @Then("^user is redirected on the Actor '(.*)' page$")
+    public void userIsRedirectedOnTheActorPage(String text) {
+        waitVisibility(PersonalizedPage.getPhotoInfoTable());
+        Assert.assertTrue(isTextPresent(text));
+        System.out.println("user is redirected on the page");
+    }
+
+    @When("^user clicks on the 'Actors' folder$")
+    public void userClicksOnTheActorsList() {
+        click(PersonalizedPage.getArrow());
+        click(PersonalizedPage.getAddToCategoryActorsButton());
+        System.out.println("user clicks on the 'Actors' list");
+    }
+
+    @Then("^folder '(.*)' appears on the page$")
+    public void folderIsAppearOnThePage(String text){
+        waitVisibility(PersonalizedPage.getActorsFolder());
+        Assert.assertTrue(isTextPresent(text));
+        System.out.println("folder "+text+" is appear on the page");
+        //delete added actor from folder
+        click(PersonalizedPage.getAddToCategoryActorsButton());
+        System.out.println("user clicks on the 'Actors' list");
+    }
 }
