@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
+import static junit.framework.TestCase.assertTrue;
+
 public abstract class CommonActions {
 
     public WebDriver driver = StepHooks.getDriver();
@@ -24,6 +28,11 @@ public abstract class CommonActions {
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {
     wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+    }
+
+    //wait specific time
+    public void waitSpecificAmountOfTime(int seconds){
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
     //Click Method
@@ -51,13 +60,31 @@ public abstract class CommonActions {
         Assert.assertTrue(driver.findElement(By.xpath(elementBy)).isDisplayed());
     }
 
+    //check if page source contains element
+    public boolean isPageSourceContaining(String element){
+        if (driver.getPageSource().contains(element)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //refresh
+    public void refresh(){
+        driver.navigate().refresh();
+    }
+
     //Asserts
     public void assertEqualsElements(String elementBy, String expectedText) {
         waitVisibility(elementBy);
         Assert.assertEquals(readText(elementBy), expectedText);
     }
 
+
     public void assertEqualsURL(String currentURL, String expectedURL) {
         Assert.assertEquals(currentURL, expectedURL);
+    }
+
+    public void assertIsTrue(String textIfFalse,boolean element){
+        assertTrue(textIfFalse,element);
     }
 }
