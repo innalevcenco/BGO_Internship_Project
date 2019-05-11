@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.CommonActions;
 import pages.MoviePage;
+import pages.MyProfilePage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +19,7 @@ public class MovieSteps extends CommonActions {
 
     @And("^user clicks on 'create folder' button$")
     public void userClicksOnNewFolderButton() {
-        click(MoviePage.getCreateNewFolder());
+        click(MyProfilePage.getCreateNewFolder());
     }
 
     @And("^user write the movie name (.*)$")
@@ -34,7 +35,7 @@ public class MovieSteps extends CommonActions {
 
     @When("^user clicks on the created 'New folder'$")
     public void userClicksOnTheNewCreatedFolder() {
-        click(MoviePage.getFirstCreatedFolder());
+        click(MyProfilePage.getFirstCreatedFolder());
     }
 
     @And("^user chooses first movie field under search bar$")
@@ -49,8 +50,9 @@ public class MovieSteps extends CommonActions {
 
     @And("^user clicks on the check mark for'automatically remove watched movies'$")
     public void userClicksOnTheCheckMarkForAutomaticallyRemoveWatchedMovies() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        click(MoviePage.getMovieCheckmarkForDeleteWachedmovies());
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        scrollTo(MoviePage.getMovieCheckboxForDeleteWachedmovies());
+        click(MoviePage.getMovieCheckboxForDeleteWachedmovies());
     }
 
     @And("^user clicks on 'Save' button$")

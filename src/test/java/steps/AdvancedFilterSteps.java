@@ -12,13 +12,11 @@ import pages.CommonActions;
 import pages.HomePage;
 import pages.MovieSearchResultPages;
 
-import java.util.concurrent.TimeUnit;
-
 public class AdvancedFilterSteps extends CommonActions {
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
-        click(HomePage.getSearchButton());
+        click(HomePage.getAdvancedSearchButton());
         System.out.println("User clicks on search button");
     }
 

@@ -25,7 +25,7 @@ public class HomeSteps extends CommonActions {
 
     @When("^user clicks on 'Search' button$")
     public void userClicksOnMovieButton() {
-        enter(HomePage.getSearchField());
+        click(HomePage.getRandSearchButton());
     }
 
     @When("^user clicks on profile button$")

@@ -7,11 +7,15 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        tags = {"@test"},
-        plugin = {"pretty", "html:target/selenium-reports", "json:target/json/output.json"},
+        tags = {"@functional",
+                "@aciuvaga"},
+        plugin = {"pretty",
+                "html:target/selenium-reports",
+                "json:target/json/output.json"},
 //        "testing:target/tn"
 //        "pretty:target/pretty"
-        glue = {"hooks", "steps"})
+        glue = {"hooks", "steps"}
+        )
 
 public class TestRunner {
 }
