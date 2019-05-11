@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import hooks.StepHooks;
 import org.openqa.selenium.WebDriver;

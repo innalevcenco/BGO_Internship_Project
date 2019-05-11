@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -14,26 +13,29 @@ public class HomeSteps extends CommonActions {
     }
 
     @Given("^home page is open$")
-    public void home_page_is_open() {
+    public void homePageIsOpen() {
         String currentURL = HomePage.getHomePage();
         Assert.assertEquals(currentURL, "https://www.kinopoisk.ru/");
-        System.out.println("step1");
     }
 
     @When("^user searches for (.*)$")
-    public void user_search(String text) {
+    public void userSearch(String text) {
         writeText(HomePage.getSearchField(), text);
-        System.out.println("Step 2");
     }
 
-    @When("^user clicks on (Фильмы) button$")
-    public void user_clicks_on_movie_button() {
-        click(HomePage.getSearchButton());
+    @When("^user clicks on 'Search' button$")
+    public void userClicksOnMovieButton() {
+        enter(HomePage.getSearchField());
     }
 
-    @When("^user clicks on (profile) button$")
-    public void user_clicks_on_profile_button() {
+    @When("^user clicks on profile button$")
+    public void userClicksOnProfileButton() {
         click(HomePage.getMyProfileButton());
+    }
+
+    @When("^user clicks on 'Will watch' button$")
+    public void userClicksOnWillWatchButton() {
+        click(HomePage.getWillWatchButton());
     }
 }
 

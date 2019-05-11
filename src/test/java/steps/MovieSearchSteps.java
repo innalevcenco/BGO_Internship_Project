@@ -1,10 +1,12 @@
 package steps;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import pages.CommonActions;
 import pages.MovieSearchResultPages;
+import pages.MyProfilePage;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,13 +17,13 @@ public class MovieSearchSteps extends CommonActions {
 
 
     @Then("^search results are displayed$")
-    public void search_results_are_displayed() {
+    public void searchresultsAreDisplayed() {
         String currentURL = MovieSearchResultPages.getFirstDisplayedMovie();
         Assert.assertNotEquals ( currentURL, "" );
     }
 
-    @When("^user clicks on the first (link) movie$")
-    public void userChoosesMovie() {
+    @And("^user clicks on the first link$")
+    public void userChoosesFirstLink() {
         click ( MovieSearchResultPages.getFirstDisplayedMovie() );
     }
 
@@ -39,14 +41,14 @@ public class MovieSearchSteps extends CommonActions {
 //        }
 //    }
 
-    @When("^user clicks on (will watch) button$")
-    public void add_movie_into_willWatch_list() {
-        click ( MovieSearchResultPages.getWillWatchButton());
+    @When("^user clicks on 'Will watch' folder$")
+    public void addMovieIntoWillWatchList() {
+        click ( MyProfilePage.getWillWatchFolder());
     }
 
     //    should add an assert for checking that result is right.
-    @Then("^movie is saved in (will watch) list$")
-    public void movie_is_added_in_list() {
+    @Then("^movie is saved in 'Will watch' folder$")
+    public void movieIsAddedInList() {
         assertThat ( "User is warned if new movie is added in the list", "Lost", is ( "Lost" ) );
 
     }
@@ -55,5 +57,10 @@ public class MovieSearchSteps extends CommonActions {
     public void movieDetailsAreDisplayed() {
         Assert.assertEquals("", "");
 
+    }
+
+    @And("^user clicks on Movies button$")
+    public void userClicksOnMoviesButton() {
+        click ( MovieSearchResultPages.getMoviesButton());
     }
 }

@@ -1,15 +1,21 @@
 package steps;
 
-        import cucumber.api.java.en.Given;
-        import org.junit.Assert;
-        import pages.UserFolders;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pages.CommonActions;
+import pages.MyProfilePage;
 
-        import static sun.management.Agent.getText;
 
-public class MyProfileSteps {
-
-    @Given("^new added film is displayed first in the (Буду смотреть) list$")
-    public void checkNewAddedFilmIsDisplayed() {
-//        Assert.assertTrue ( getText ( UserFolders.getFirstDisplayedMovie()).equals ( movieSearchSteps.movieTitle ) );
+public class MyProfileSteps extends CommonActions {
+    @When("^user clicks on 'Note' folder$")
+    public void clickOnNoteFolder() {
+        click(MyProfilePage.getNoteFolder());
     }
+
+
+    @Then("^the new comment is displayed on the 'Note' folder$")
+    public void moviePageIsDisplayed(){
+        System.out.println("Have to add an Assert");
+    }
+
 }

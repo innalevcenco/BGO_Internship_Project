@@ -6,35 +6,31 @@ Feature: Add list and movies in the lists
   @test
   Scenario Outline: The new added trailer movie is displayed in the I will watch list
     Given home page is open
-    When user searches for <title>
-    And user clicks on the Search button
-    Then movie details are displayed
-    When user clicks on will watch button
-    Then movie is saved in will watch list
+    When user searches for <Title>
+    And user clicks on 'Search' button
+    And user clicks on the first link
+    And user clicks on 'Will watch' folder
+    Then movie is saved in 'Will watch' folder
     When user clicks on profile button
-    And user clicks on Фильмы button
-    Then new added film is displayed first in the Буду смотреть list
+    And user clicks on Movies button
+    Then new added film is displayed in the Will watch list
     Examples:
-      | title |
+      | Title |
       | Lost  |
-      | Beast |
-#
-#  @test
-#  Scenario: Create new list with seen movies and add check mark for rated or viewed movies to be deleted
-#    Given home page is open
-#    When user clicks on 'Буду смотреть' button on the top, at the right side
-#    And user clicks on 'новая папка' field  and write the folder name 'the best movies'
-#    Then the new folder is displayed
-#    When user clicks on 'the best movies' folder
-#    And user clicks on search field and searches for The Intouchables movie
-#    And choose wanted movie
-#    Then specified movie is displayed
-#    When user checks the check mark for adding movie in 'the best movies' list
-#    And user checks the check mark for'автоматически удалять из папки оцененные или просмотренные фильмы'
-#    And user clicks on 'cохранить' button
-#    Then all modifications are saved in 'the best movie' folder
+#      | Beast |
 
 
-
+  @test
+  Scenario: Create new list with seen movies and add check mark for rated or viewed movies to be deleted
+    Given home page is open
+    When user clicks on 'Will watch' button
+    And user clicks on 'create folder' button
+    And user clicks on the created 'New folder'
+    And user write the movie name The Intouchables
+    And user chooses first movie field under search bar
+    And user clicks on the check mark for adding movie in 'new folder' list
+    And user clicks on the check mark for'automatically remove watched movies'
+    And user clicks on 'Save' button
+    Then all modifications are saved in 'New folder'
 
 
