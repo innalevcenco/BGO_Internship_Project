@@ -14,8 +14,7 @@ public class HomeSteps extends CommonActions {
 
     @Given("^home page is open$")
     public void homePageIsOpen() {
-        String currentURL = HomePage.getHomePage();
-        Assert.assertEquals(currentURL, "https://www.kinopoisk.ru/");
+        HomePage.getHomePage();
     }
 
     @When("^user searches for (.*)$")
@@ -25,7 +24,7 @@ public class HomeSteps extends CommonActions {
 
     @When("^user clicks on 'Search' button$")
     public void userClicksOnMovieButton() {
-        enter(HomePage.getSearchField());
+        click(HomePage.getRandSearchButton());
     }
 
     @When("^user clicks on profile button$")

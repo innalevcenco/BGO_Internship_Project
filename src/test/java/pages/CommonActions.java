@@ -3,10 +3,14 @@ package pages;
 import hooks.StepHooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+import static junit.framework.TestCase.assertTrue;
 
 public abstract class CommonActions {
 
@@ -14,23 +18,59 @@ public abstract class CommonActions {
 //    public WebDriverWait wait;
 
     //TODO like driver
-    public WebDriverWait wait = new WebDriverWait(driver, 15);
+    public WebDriverWait wait = new WebDriverWait(driver, 30);
 
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {
-    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+    }
+
+    //Wait element to be clickable
+    public void waitClickable(String elementBy) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementBy)));
+    }
+
+    //wait specific time
+    public void waitSpecificAmountOfTime(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
     //Click Method
     public void click(String elementBy) {
-        waitVisibility(elementBy);
+        waitClickable(elementBy);
         driver.findElement(By.xpath(elementBy)).click();
     }
 
+    //Scroll Method
+    public void scrollTo(String elementBy) {
+
+        boolean isElementPresent;
+        for (int i = 0; i < 40; i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,20)", "");
+            try {
+                driver.findElement(By.xpath(elementBy));
+                isElementPresent = true;
+            } catch (org.openqa.selenium.NoSuchElementException e) {
+                isElementPresent = false;
+            }
+            if (isElementPresent) {
+                break;
+            }
+        }
+    }
+
     //Write Text
-    public void writeText(String elementBy, String text) {
+    public String writeText(String elementBy, String text) {
         waitVisibility(elementBy);
         driver.findElement(By.xpath(elementBy)).sendKeys(text);
+        return elementBy;
+    }
+
+    //Write Text
+    public void getText(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).getText();
     }
 
     //Enter
@@ -39,25 +79,31 @@ public abstract class CommonActions {
         driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
     }
 
-
     //Read Text
     public String readText(String elementBy) {
         waitVisibility(elementBy);
         return driver.findElement(By.xpath(elementBy)).getText();
     }
 
-
-//    //Read Text
-//    public String getElementByXpath(String elementBy) {
-//        waitVisibility(elementBy);
-//        return String.valueOf(driver.findElement(By.xpath(elementBy)));
-//    }
-
     //IsDisplayed
     public void isDisplayed(String elementBy) {
         waitVisibility(elementBy);
         driver.findElement(By.xpath(elementBy)).isDisplayed();
         Assert.assertTrue(driver.findElement(By.xpath(elementBy)).isDisplayed());
+    }
+
+    //check if page source contains element
+    public boolean isPageSourceContaining(String element) {
+        if (driver.getPageSource().contains(element)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //refresh
+    public void refresh() {
+        driver.navigate().refresh();
     }
 
     //Asserts
@@ -68,5 +114,9 @@ public abstract class CommonActions {
 
     public void assertEqualsURL(String currentURL, String expectedURL) {
         Assert.assertEquals(currentURL, expectedURL);
+    }
+
+    public void assertIsTrue(String textIfFalse, boolean element) {
+        assertTrue(textIfFalse, element);
     }
 }

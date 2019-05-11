@@ -5,11 +5,12 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class StepHooks {
 
     private static WebDriver driver;
+
+    public StepHooks() {
+    }
 
     public static WebDriver getDriver() {
         return driver;
@@ -19,22 +20,15 @@ public class StepHooks {
         StepHooks.driver = driver;
     }
 
-    public StepHooks() {
-    }
-
     @Before
     public void launchChromeDriver() {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22");
-        setDriver ( Driver.initializeDriver( ));
-        getDriver ().manage ().window ().maximize ();
+        setDriver(Driver.initializeDriver());
+        getDriver().manage().window().maximize();
     }
 
     @After
     public void afterScenario() {
-//        driver.manage().deleteAllCookies();
-        System.out.println ("sedfrghhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-        getDriver ().close ();
-        getDriver().quit();
-        System.out.println ("sedfrghhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        driver.manage().deleteAllCookies();
+        driver.close();
     }
 }

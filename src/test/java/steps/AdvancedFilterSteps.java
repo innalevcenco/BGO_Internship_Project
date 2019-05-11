@@ -12,13 +12,11 @@ import pages.CommonActions;
 import pages.HomePage;
 import pages.MovieSearchResultPages;
 
-import java.util.concurrent.TimeUnit;
-
 public class AdvancedFilterSteps extends CommonActions {
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
-        click(HomePage.getSearchButton());
+        click(HomePage.getAdvancedSearchButton());
         System.out.println("User clicks on search button");
     }
 
@@ -81,20 +79,17 @@ public class AdvancedFilterSteps extends CommonActions {
         click(AdvancedFilterPage.getComedyOptionField());
     }
 
-    @Then("^movie page is displayed$")
-    public void moviePageIsDisplayed() {
-        String filmURL = "https://www.kinopoisk.ru/film/972889/";
-        Assert.assertEquals(MovieSearchResultPages.getBadcomedianMovieDetails(), filmURL);
+    @And("^user clicks on 'Note' button$")
+    public void clickNoteButton() {
+        waitVisibility(MovieSearchResultPages.getMovieNoteButton());
+        click(MovieSearchResultPages.getMovieNoteButton());
     }
 
-    @When("^user clicks on 'Note' button from displayed movie$")
-    public void clickOnNote() {
-        click(MovieSearchResultPages.getMovieNote());
-    }
 
-    @When("^user fills 'Note' field$")
+    @And("^user fills 'Note' field$")
     public void addComment() {
-        writeText(MovieSearchResultPages.getMovieNote(), "I will watch this film later");
+        waitVisibility(MovieSearchResultPages.getMovieNoteButton());
+        writeText(MovieSearchResultPages.getMovieNoteField(), "I will watch this film later");
     }
 
     @And("^user clicks on 'Save' note button$")

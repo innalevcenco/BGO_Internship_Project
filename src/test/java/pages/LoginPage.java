@@ -14,7 +14,6 @@ public class LoginPage {
     private final String homeEnterButtonLocator = "//*[@id='partial_component__header-topline']/div/div/div[1]/div/div[1]/div[3]/div/button";
     private final String usernameEnterButtonLocator = "//*[@id='root']/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/form/div[3]/button[1]";
     private final String passwordEnterButtonLocator = "//*[@id='root']/div/div/div[2]/div/div/div[3]/div[2]/div/div/form/div[2]/button[1]";
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -31,6 +30,7 @@ public class LoginPage {
         element.clear();
         element.sendKeys(value);
     }
+
 
     public String homeEnterButton() {
         return homeEnterButtonLocator;

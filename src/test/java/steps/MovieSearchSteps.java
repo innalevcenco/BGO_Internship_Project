@@ -4,9 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import pages.CommonActions;
-import pages.MovieSearchResultPages;
-import pages.MyProfilePage;
+import pages.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,6 +28,7 @@ public class MovieSearchSteps extends CommonActions {
 //    @When("^user saves th title of the first displayed movie$")
 //    public void userSavesThTitleOfTheFirstDisplayedMovie() {
 //        movieTitle = MovieSearchResultPages.getFirstDisplayedMovie().getText();
+//        driver.getTitle();
 //    }
 
 //    @Then("^movie details are displayed$")
@@ -41,16 +40,9 @@ public class MovieSearchSteps extends CommonActions {
 //        }
 //    }
 
-    @When("^user clicks on 'Will watch' folder$")
-    public void addMovieIntoWillWatchList() {
-        click ( MyProfilePage.getWillWatchFolder());
-    }
-
-    //    should add an assert for checking that result is right.
-    @Then("^movie is saved in 'Will watch' folder$")
-    public void movieIsAddedInList() {
-        assertThat ( "User is warned if new movie is added in the list", "Lost", is ( "Lost" ) );
-
+    @When("^user clicks on 'Will watch' button from movie page$")
+    public void addMovieIntoWillWatchButtonFromMofiePage() {
+        click (MoviePage.getWatchLaterButton());
     }
 
     @Then("^movie details are displayed$")
@@ -59,8 +51,8 @@ public class MovieSearchSteps extends CommonActions {
 
     }
 
-    @And("^user clicks on Movies button$")
+    @And("^user clicks on 'Movies' button$")
     public void userClicksOnMoviesButton() {
-        click ( MovieSearchResultPages.getMoviesButton());
+        click (HomePage.getMoviesButton());
     }
 }

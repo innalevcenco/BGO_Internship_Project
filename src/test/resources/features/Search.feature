@@ -1,4 +1,4 @@
-#@UI @test
+#@functional
 #Feature: Test of searching functionality
 #
 #  Background:

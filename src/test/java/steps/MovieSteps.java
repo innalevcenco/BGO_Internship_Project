@@ -6,15 +6,14 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.CommonActions;
 import pages.MoviePage;
+import pages.MovieSearchResultPages;
 
 import java.util.concurrent.TimeUnit;
 
-public class MovieSteps extends CommonActions {
 
-    @Given("^new added film is displayed in the Will watch list$")
-    public void checkNewAddedFilmIsDisplayed() {
-//        Assert.assertTrue ( getText ( UserFolders.getFirstDisplayedMovie()).equals ( movieSearchSteps.movieTitle ) );
-    }
+public class MovieSteps extends CommonActions {
+    MovieSearchResultPages movieSearchResultPages;
+//    public String movieTitle = "";
 
     @And("^user clicks on 'create folder' button$")
     public void userClicksOnNewFolderButton() {
@@ -49,8 +48,9 @@ public class MovieSteps extends CommonActions {
 
     @And("^user clicks on the check mark for'automatically remove watched movies'$")
     public void userClicksOnTheCheckMarkForAutomaticallyRemoveWatchedMovies() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        click(MoviePage.getMovieCheckmarkForDeleteWachedmovies());
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        scrollTo(MoviePage.getCheckboxForDeleteWachedmovies());
+        click(MoviePage.getCheckboxForDeleteWachedmovies());
     }
 
     @And("^user clicks on 'Save' button$")
@@ -63,4 +63,31 @@ public class MovieSteps extends CommonActions {
         //should add an assert
         System.out.println("should add an assert");
     }
+
+    @Given("^new added film is displayed in the Will watch list$")
+    public void checkNewAddedFilmIsDisplayed() {
+//        getText ( movieSearchResultPages.getFirstDisplayedMovie());
+//        Assert.assertTrue ( getText ( UserFolders.getFirstDisplayedMovie()).equalTo ( movieSearchSteps.movieTitle ) );
+        System.out.println("should add an assert");
+    }
+
+    @Given("^the films are deleted from 'Will watch' list$")
+    public void deleteNewAddedMoviesFromTheFolder() {
+        if(MoviePage.getRemoveMovieFromFolder() != null) {
+            click(MoviePage.getRemoveMovieFromFolder());
+        }
+        else refresh();
+    }
+
+    @When("^user clicks on 'Note' folder$")
+    public void clickOnNoteFolder() {
+        click(MoviePage.getNoteFolder());
+    }
+
+
+    @Then("^the new comment is displayed on the 'Note' folder$")
+    public void moviePageIsDisplayed(){
+        System.out.println("Have to add an Assert");
+    }
+
 }

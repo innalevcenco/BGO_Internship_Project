@@ -10,7 +10,7 @@ public class AdvancedFilterPage extends CommonActions {
     private static final String GENRE_FIELD = "//*[@id='m_act[genre]']";
     private static final String searchButton = "//*[@id=\"formSearchMain\"]/input[11]";
     private static final String resultOfSearchBlock = "//*[@id='block_left_pad']/div/div[2]";
-    private static final String COMEDY_OPTION_FIELD = "//*[@id='m_act[genre]']/option[14]";
+    private static final String COMEDY_OPTION_FIELD = "//*[@id='m_act[genre]']/option[6]";
     private static final String GENRE_CHECKBOX = "//*[@id='m_act[genre_and]']";
 
 
