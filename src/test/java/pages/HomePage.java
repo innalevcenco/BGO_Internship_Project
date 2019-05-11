@@ -27,6 +27,12 @@ public class HomePage {
     private static final String LOG_OUT_BUTTON = "//*[@id='partial_component__header-topline']/div/div/div[1]/div/div[1]/div[3]/div/div[1]/div/span";
     private static final String MESSAGES_BUTTON = "//*[@id='partial_component__header-topline']/div/div/div[1]/div/div[1]/div[3]/div/div[2]/div/ul/div[3]/li[1]/a";
     private static final String RAND_SEARCH_BUTTON="//*[@id=\"partial_component__header-topline\"]/div/div/div[1]/div/div[1]/div[2]/form/div/div[1]/button";
+    private static final String WEEKEND_RESULTS="//*[@id=\"block_right\"]/dl[2]/dt/a";
+    private static final String MEDIA ="//*[@id=\"partial_component__header-topline\"]/div/div/div[1]/div/div[1]/nav/ul/li[4]/a";
+
+    public static String getMEDIA() { return MEDIA; }
+
+    public static String getWeekendResults() { return WEEKEND_RESULTS; }
 
     public static String getHomePage() {
         return HOME_PAGE;
@@ -36,7 +42,7 @@ public class HomePage {
         return SEARCH_FIELD;
     }
 
-    public static String getSearchButton() {
+    public static String getAdvancedSearchButton() {
         return ADVANCED_SEARCH_BUTTON;
     }
 

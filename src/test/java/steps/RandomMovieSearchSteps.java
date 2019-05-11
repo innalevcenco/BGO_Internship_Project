@@ -16,6 +16,7 @@ import pages.MoviePage;
 public class RandomMovieSearchSteps extends CommonActions{
 
     private RandomSearchPage randomSearchPage = new RandomSearchPage();
+    private MoviePage moviePage= new MoviePage();
 
 
 
@@ -40,34 +41,40 @@ public class RandomMovieSearchSteps extends CommonActions{
 
     @And("^user chooses a period of years$")
     public void userChoosesAPeriodOfYears() {
+
         randomSearchPage.chooseRandomFirstAndLastYear();
     }
 
     @Then("^user clicks on random movie search button$")
     public void userClicksOnTheSearchButton() {
+
         randomSearchPage.clickFindMovieButton();
     }
 
     @Then("^movie is displayed$")
     public void movieIsDisplayed() {
+
         waitVisibility(randomSearchPage.getFoundMovieTitle());
+        boolean exists= randomSearchPage.isMovieFound();
+        assertIsTrue("Step failed: Movie was not found",exists);
     }
 
     @And("^user clicks on the movie title$")
     public void userClicksOnTheMovieTitle(){
+
         click(randomSearchPage.getFoundMovieTitle());
     }
 
     @And("^user clicks on favourite button$")
-    public void userClicksOnWatchLaterButton(){
+    public void userClicksOnWatchLaterButton() {
+
         click(MoviePage.getFavoritesButton());
     }
 
     @Then("^the movie is added to favourite list$")
     public void theMovieIsAddedToWatchLaterList() {
-        checkIfMovieAddedToFavouriteList();
-        //remove from favourites list
-        click(MoviePage.getFavoritesButton());
+        boolean exists = moviePage.checkIfMovieAddedToFavouriteList();
+        assertIsTrue("Step failed: Movie was not added to favourite list",exists);
     }
 
 

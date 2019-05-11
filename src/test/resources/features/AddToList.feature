@@ -36,29 +36,30 @@ Feature: Add list and movies in the lists
 #    And user clicks on 'cохранить' button
 #    Then all modifications are saved in 'the best movie' folder
 
+#  @test
+#  Scenario: Add the random chosed movie to watch favourite list
+#    Given user accesses the random movie search feature
+#    And user chooses a period of years
+#    And user adds a country
+#    And user adds a genre
+#    Then user clicks on random movie search button
+#    Then movie is displayed
+#    And user clicks on the movie title
+#    And user clicks on favourite button
+#    Then the movie is added to favourite list
+
+
+
   @test
-  Scenario: Add the random chosed movie to watch favourite list
-    Given user accesses the random movie search feature
-    And user chooses a period of years
-    And user adds a country
-    And user adds a genre
-    Then user clicks on random movie search button
-    Then movie is displayed
-    And user clicks on the movie title
-    And user clicks on favourite button
-    Then the movie is added to favourite list
+  Scenario: Filter the weekend result table to display the most profitable movie and add it to watch later list
+    Given user accesses the weekend results
+    And user chosses to see the results in dollars
+    And user filters table descendently for all profits
+    Then user accesses the first listed movie
+    And user clicks on watch later
+    Then movie is added to watch later
 
 
-
-
-#  Scenario: Filter the weekend result table to display the most profitable movie and add it to "любимые фильмы"
-#    Given user accesses the weekend results
-#    And user chosses to see the results in dollars
-#    And user filters table descendently for all profits
-#    When table is filtered
-#    Then user accesses the first listed movie
-#    And user clicks on Добавить в любимые фильмы
-#    Then movie is added to "любимые фильмы"
 
 
 

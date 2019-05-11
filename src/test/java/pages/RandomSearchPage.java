@@ -59,6 +59,15 @@ public class RandomSearchPage extends CommonActions {
         driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
     }
 
+    public boolean isMovieFound(){
+        String text= driver.findElement(By.xpath(FOUND_MOVIE_TITLE)).getText();
+        if (text.length()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 

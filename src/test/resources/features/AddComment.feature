@@ -1,8 +1,8 @@
-#Feature: Add comment to the movie
-#
-#   Background:
-#
-#     Given Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
+@test
+Feature: Add comment to the movie
+
+  Background:
+    Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
 
 #  Scenario: New comment is added to a specified movie
 #    Given home page is open
@@ -24,12 +24,12 @@
 #    And user clicks on 'alexandrugrama' button
 #    Then the new comment is displayed on the customer account
 
-#Scenario: Comment on a news article
-#Given user accesses news page
-#And user clicks on a date from the calendar
-#And user accesses the first article
-#When article is displayed
-#And user clicks on "Текст:" textfield
-#And user writes the comment
-#And user clicks "отправить"
-#Then the comment is added
+
+#  Scenario:Comment on a news article
+#    Given user accesses news page
+#    And user clicks on a date from the calendar
+#    And user accesses the first article
+#    When article is displayed
+#    Then user writes the comment "Текст:" textfield
+#    And user clicks "отправить" button
+#    Then the comment is added
