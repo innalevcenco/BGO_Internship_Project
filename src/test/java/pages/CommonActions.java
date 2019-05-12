@@ -3,6 +3,8 @@ package pages;
 import hooks.StepHooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +19,7 @@ public abstract class CommonActions {
 //    public WebDriverWait wait;
 
     //TODO like driver
-    public WebDriverWait wait = new WebDriverWait(driver, 15);
+    public WebDriverWait wait = new WebDriverWait(driver, 30);
 
 //    //Constructor
 //    public CommonActions(WebDriver driver, WebDriverWait wait) {
@@ -27,18 +29,48 @@ public abstract class CommonActions {
 
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {
-    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
+    }
+
+    //Wait element to be clickable
+    public void waitClickable(String elementBy) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementBy)));
     }
 
     //wait specific time
-    public void waitSpecificAmountOfTime(int seconds){
+    public void waitSpecificAmountOfTime(int seconds) {
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
     //Click Method
     public void click(String elementBy) {
-        waitVisibility(elementBy);
+        waitClickable(elementBy);
         driver.findElement(By.xpath(elementBy)).click();
+    }
+
+    //Scroll Method
+    public void scrollTo(String elementBy) {
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(driver.findElement(By.xpath(elementBy)));
+//        actions.perform();
+
+//        webElement = driver.findElement(By.xpath("bla-bla-bla"));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", driver.findElement(By.xpath(elementBy)));
+//        WebElement element= driver.findElement(By.xpath(elementBy));
+        boolean isElementPresent;
+        for (int i = 0; i < 40; i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,20)", "");
+            try {
+                driver.findElement(By.xpath(elementBy));
+                isElementPresent = true;
+            } catch (org.openqa.selenium.NoSuchElementException e) {
+                isElementPresent = false;
+            }
+            if (isElementPresent) {
+                break;
+            }
+        }
     }
 
     //Write Text
@@ -46,6 +78,13 @@ public abstract class CommonActions {
         waitVisibility(elementBy);
         driver.findElement(By.xpath(elementBy)).sendKeys(text);
     }
+
+    //Enter
+    public void enter(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
+    }
+
 
     //Read Text
     public String readText(String elementBy) {
@@ -61,15 +100,16 @@ public abstract class CommonActions {
     }
 
     //check if page source contains element
-    public boolean isPageSourceContaining(String element){
-        if (driver.getPageSource().contains(element)){
+    public boolean isPageSourceContaining(String element) {
+        if (driver.getPageSource().contains(element)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     //refresh
-    public void refresh(){
+    public void refresh() {
         driver.navigate().refresh();
     }
 
@@ -79,12 +119,11 @@ public abstract class CommonActions {
         Assert.assertEquals(readText(elementBy), expectedText);
     }
 
-
     public void assertEqualsURL(String currentURL, String expectedURL) {
         Assert.assertEquals(currentURL, expectedURL);
     }
 
-    public void assertIsTrue(String textIfFalse,boolean element){
-        assertTrue(textIfFalse,element);
+    public void assertIsTrue(String textIfFalse, boolean element) {
+        assertTrue(textIfFalse, element);
     }
 }

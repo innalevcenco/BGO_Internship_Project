@@ -1,30 +1,10 @@
-@test
-Feature: Add comment to the movie
+@functional
+Feature: Add comment to a news article
 
   Background:
     Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
 
-#  Scenario: New comment is added to a specified movie
-#    Given home page is open
-#    When user clicks on 'Расширенный поиск' button
-#    And user clicks on country field '+ страна:'
-#    And user chooses 'CШA'
-#    And user clicks on genre field '+ жанр:'
-#    And user chooses 'комедия' and check 'комедия' mark
-#    And user clicks on 'поиск' button
-#    Then search results are  displayed
-#    When user clicks on the chosen 'movie'
-#    Then movie page is displayed
-#    When user adds a comment to the movie filling 'Текст:' and 'Заголовок:' fields
-#    And user clicks on review type field 'тип рецензии'
-#    And user chooses positive field 'положительная'
-#    And user clicks on submit button отправитъ'
-#    Then the new changes are saved
-#    When user clicks on 'profile' button on the top, at the right side
-#    And user clicks on 'alexandrugrama' button
-#    Then the new comment is displayed on the customer account
-
-
+#  @aciuvaga
 #  Scenario:Comment on a news article
 #    Given user accesses news page
 #    And user clicks on a date from the calendar
@@ -33,3 +13,23 @@ Feature: Add comment to the movie
 #    Then user writes the comment "Текст:" textfield
 #    And user clicks "отправить" button
 #    Then the comment is added
+
+#  @aciuvaga
+#  Scenario: New comment is added to a specified movie
+#    Given home page is open
+#    When user clicks on 'Advanced Filter' button
+#    And user clicks on 'country' field
+#    And user select 'Russia' field
+#    And user clicks on 'genre' field
+#    And user chooses 'comedy' option
+#    And user clicks on the checkbox
+#    And user clicks on the 'Search' button
+#    And user clicks on the first link
+#    Then movie page is displayed
+#    And user clicks on 'Note' button from displayed movie
+#    And user fills 'Note' field
+#    And user clicks on 'Save' note button
+#    Then new note is displayed
+#    When user clicks on 'Will watch' button
+#    And user clicks on 'Note' folder
+#    Then the new comment is displayed on the 'Note' folder
