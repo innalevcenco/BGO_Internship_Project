@@ -4,45 +4,34 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import pages.*;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import pages.CommonActions;
+import pages.HomePage;
+import pages.MoviePage;
+import pages.MovieSearchResultPages;
 
 public class MovieSearchSteps extends CommonActions {
-    MovieSearchResultPages movieSearchResultPages;
     public String movieTitle = "";
-
+    MovieSearchResultPages movieSearchResultPages;
 
     @Then("^search results are displayed$")
     public void searchresultsAreDisplayed() {
         String currentURL = MovieSearchResultPages.getFirstDisplayedMovie();
-        Assert.assertNotEquals ( currentURL, "" );
+        Assert.assertNotEquals(currentURL, "");
     }
 
     @And("^user clicks on the first link$")
     public void userChoosesFirstLink() {
-        click ( MovieSearchResultPages.getFirstDisplayedMovie() );
+        click(MovieSearchResultPages.getFirstDisplayedMovie());
     }
 
-//    @When("^user saves th title of the first displayed movie$")
-//    public void userSavesThTitleOfTheFirstDisplayedMovie() {
-//        movieTitle = MovieSearchResultPages.getFirstDisplayedMovie().getText();
-//        driver.getTitle();
-//    }
-
-//    @Then("^movie details are displayed$")
-//    public void movie_details_are_displayed(String movieName) {
-//        if (movieName == "Lost") {
-//             MovieSearchResultPages.getLostMovieDetails();
-//        } else if (movieName == "Beast") {
-//            getElementByXpath (MovieSearchResultPages.getBeastMovieDetails() );
-//        }
-//    }
+    @When("^user saves the title of the first displayed movie$")
+    public void userSavesThTitleOfTheFirstDisplayedMovie() {
+        movieTitle = getText(movieSearchResultPages.getFirstDisplayedMovieTitle());
+    }
 
     @When("^user clicks on 'Will watch' button from movie page$")
     public void addMovieIntoWillWatchButtonFromMofiePage() {
-        click (MoviePage.getWatchLaterButton());
+        click(MoviePage.getWatchLaterButton());
     }
 
     @Then("^movie details are displayed$")
@@ -53,6 +42,6 @@ public class MovieSearchSteps extends CommonActions {
 
     @And("^user clicks on 'Movies' button$")
     public void userClicksOnMoviesButton() {
-        click (HomePage.getMoviesButton());
+        click(HomePage.getMoviesButton());
     }
 }

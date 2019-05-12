@@ -28,7 +28,6 @@ public class StepHooks {
 
     @After
     public void afterScenario() {
-        driver.manage().deleteAllCookies();
         driver.close();
     }
 }

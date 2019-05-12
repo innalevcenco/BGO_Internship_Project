@@ -5,20 +5,20 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
+
 import static junit.framework.TestCase.assertTrue;
 
 public abstract class CommonActions {
-
     StepHooks stepHooks = new StepHooks();
     public WebDriver driver = stepHooks.getDriver();
-//    public WebDriverWait wait;
-
     //TODO like driver
     public WebDriverWait wait = new WebDriverWait(driver, 30);
 
@@ -33,13 +33,8 @@ public abstract class CommonActions {
     }
 
     //wait specific time
-    public void waitSpecificAmountOfTime(int seconds){
+    public void waitSpecificAmountOfTime(int seconds) {
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
-    }
-
-    //Wait element to be clickable
-    public void waitClickable(String elementBy) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementBy)));
     }
 
     //Click Method
@@ -47,6 +42,13 @@ public abstract class CommonActions {
         waitClickable(elementBy);
         driver.findElement(By.xpath(elementBy)).click();
     }
+
+    //Click Method
+    public void clickOnHidenElement(String elementBy) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", driver.findElement(By.xpath(elementBy)));
+    }
+
 
     //Scroll Method
     public void scrollTo(String elementBy) {
@@ -76,16 +78,11 @@ public abstract class CommonActions {
     }
 
     //Write Text
-    public void getText(String elementBy) {
+    public String getText(String elementBy) {
         waitVisibility(elementBy);
-        driver.findElement(By.xpath(elementBy)).getText();
+        return driver.findElement(By.xpath(elementBy)).getText();
     }
 
-    //Enter
-    public void enter(String elementBy) {
-        waitVisibility(elementBy);
-        driver.findElement(By.xpath(elementBy)).sendKeys(text);
-    }
 
     //Read Text
     public String readText(String elementBy) {
@@ -126,6 +123,12 @@ public abstract class CommonActions {
         driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
     }
 
+    //Enter Key
+    public void clickOnEnterKey() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+    }
+
     public void assertEqualsURL(String currentURL, String expectedURL) {
         Assert.assertEquals(currentURL, expectedURL);
     }
@@ -141,8 +144,9 @@ public abstract class CommonActions {
         }
         return textFound;
     }
+
     //Work with dropDown Lists
-    public void dropDownList(String elementBy, String text){
+    public void dropDownList(String elementBy, String text) {
         Select select = new Select(driver.findElement(By.xpath(elementBy)));
     }
 

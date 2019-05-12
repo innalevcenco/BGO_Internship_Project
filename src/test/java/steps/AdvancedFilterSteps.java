@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.Select;
 import pages.AdvancedFilterPage;
 import pages.CommonActions;
 import pages.HomePage;
-import pages.PersonalizedPage;
 import pages.MovieSearchResultPages;
 
 public class AdvancedFilterSteps extends CommonActions {
@@ -62,14 +61,14 @@ public class AdvancedFilterSteps extends CommonActions {
         System.out.println("Result of search page is displayed");
     }
 
-    @When("^user clicks on 'country' field$")
-    public void clicksOnCountryField() {
-        click(AdvancedFilterPage.getCountryFiled());
+    @When("^user chooses 'an option' from option field$")
+    public void chooseOption() {
+        click(AdvancedFilterPage.getComedyOptionField2());
     }
 
-    @When("^user select 'Russia' field$")
-    public void clicksOnSecondOptionField() {
-        click(AdvancedFilterPage.getRussiaOptionField());
+    @And("^user clicks on the checkbox$")
+    public void userClicksOnCheckbox() {
+        click(AdvancedFilterPage.getComedyOptionField2());
     }
 
     @When("^user clicks on 'genre' field$")
@@ -77,36 +76,18 @@ public class AdvancedFilterSteps extends CommonActions {
         click(AdvancedFilterPage.getGenreField());
     }
 
-    @When("^user chooses 'comedy' option$")
-    public void choosesOptionComedy() {
-        click(AdvancedFilterPage.getComedyOptionField());
-    }
-
-    @And("^user clicks on the checkbox$")
-    public void userClicksOnCheckbox() {
-        click(AdvancedFilterPage.getComedyOptionField());
-    }
-
     @And("^user clicks on 'Note' button$")
     public void clickNoteButton() {
-        waitVisibility(MovieSearchResultPages.getMovieNoteButton());
         click(MovieSearchResultPages.getMovieNoteButton());
     }
 
-
-    @And("^user fills 'Note' field$")
-    public void addComment() {
-        waitVisibility(MovieSearchResultPages.getMovieNoteButton());
-        writeText(MovieSearchResultPages.getMovieNoteField(), "I will watch this film later");
+    @And("^user fills 'Note' field with: (.*)$")
+    public void addComment(String note) {
+        writeText(MovieSearchResultPages.getMovieNoteField(), note);
     }
 
     @And("^user clicks on 'Save' note button$")
     public void userClicksOnSaveNoteButton() {
         click(MovieSearchResultPages.getSaveNoteButton());
-    }
-
-    @Then("^new note is displayed$")
-    public void newNoteIsDisplayed() {
-        Assert.assertNotEquals("Should Add an assert", "");
     }
 }
