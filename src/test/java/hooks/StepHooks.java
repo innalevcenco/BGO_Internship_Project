@@ -21,7 +21,7 @@ public class StepHooks {
     }
 
     @Before
-    public void launchChromeDriver() {
+    public void launchDriver() {
         setDriver(Driver.initializeDriver());
         getDriver().manage().window().maximize();
     }
