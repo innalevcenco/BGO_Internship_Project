@@ -5,14 +5,17 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.AdvancedFilterPage;
 import pages.CommonActions;
 import pages.HomePage;
+import pages.PersonalizedPage;
 import pages.MovieSearchResultPages;
 
 public class AdvancedFilterSteps extends CommonActions {
+
+    Actions actions = new Actions(driver);
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
@@ -33,13 +36,18 @@ public class AdvancedFilterSteps extends CommonActions {
         System.out.println("Actor is entered");
     }
 
-    //TODO need to change
     @And("^user select '(.*)' country")
-    public void userSelectCountryCountry(int text) {
-        WebElement dropdown = driver.findElement(By.xpath("//*[@id='country']"));
-//        //*[@id="country"]/option[3]
-        Select select = new Select(dropdown);
-        select.selectByValue(String.valueOf(text));
+    public void userSelectsCountry(String country) {
+        click(AdvancedFilterPage.getCountryFiled());
+        Select select = new Select(driver.findElement(By.xpath(AdvancedFilterPage.getCountryFiled())));
+        select.selectByVisibleText(country);
+    }
+
+    @And("^user enters '(.*)' year$")
+    public void userEntersYear(String year) {
+        writeText(AdvancedFilterPage.getYearField(), year);
+        Assert.assertTrue(isTextPresent(year));
+        System.out.println("Year is entered");
     }
 
     @And("^user clicks on the 'Search' button$")

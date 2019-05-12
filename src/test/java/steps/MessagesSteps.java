@@ -1,28 +1,17 @@
 package steps;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.CommonActions;
 import pages.HomePage;
 import pages.MessagesPage;
 
-public class MessagesSteps extends CommonActions {
+import static pages.MessagesPage.*;
 
-    @Given("^user is on the home page$")
-    public void verificationLocation() {
-//        driver.get(HomePage.getHomePageLocator());
-        waitVisibility(HomePage.getLogOutButton());
-//        waitVisibility(HomePage.getLogInButton());
-        assertEqualsURL(HomePage.getHomePage(), driver.getCurrentUrl());
-        System.out.println("Home page is displayed");
-    }
+public class MessagesSteps extends CommonActions {
 
     @When("^user clicks on 'Logo' button$")
     public void userClicksOnLogoButton() {
@@ -44,39 +33,52 @@ public class MessagesSteps extends CommonActions {
 
     @Then("^user is redirected to the inbox page$")
     public void redirectedMethod() {
-        waitVisibility(MessagesPage.getNewMessageLink());
-        assertEqualsURL(MessagesPage.getInboxPageURL(), driver.getCurrentUrl());
+        waitVisibility(getNewMessageLink());
+        assertEqualsURL(getInboxPageURL(), driver.getCurrentUrl());
         System.out.println("Inbox page is displayed");
     }
 
     @When("^user clicks on the 'new message' link$")
     public void userClicksOnTheNewMessageLink() {
-        click(MessagesPage.getNewMessageLink());
+        click(getNewMessageLink());
         System.out.println("New message link is clicked");
     }
 
-    @Then("^user is redirected on the 'Send Message' page$")
+    @Then("^user redirects on the 'Send Message' page$")
     public void userIsRedirectedOnTheSendMessagePage() {
-        waitVisibility(MessagesPage.getNewMessageText());
-//        assertEqualsURL(MessagesPage.getSendMessagePageURL(), driver.getCurrentUrl());
+        waitVisibility(getNewMessageText());
+        Assert.assertTrue(isTextPresent("Новое сообщение"));
         System.out.println("Send Message page is displayed");
     }
 
     @When("^user enters '(.*)' and '(.*)'$")
     public void userEntersReceivers(String receiver, String message) {
-        writeText(MessagesPage.getReceiver(),receiver);
-        writeText(MessagesPage.getMessageField(), message);
+        writeText(getReceiver(),receiver);
+        writeText(getMessageField(), message);
         System.out.println("Step PASSED");
     }
 
     @And("^user clicks on 'Send' button$")
     public void userClicksOnSendButton() {
-        click(MessagesPage.getSendButton());
+        waitVisibility(getSendButton());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath(getSendButton())).click();
         System.out.println("Button is clicked");
     }
 
     @Then("^'(.*)' is displayed on current page$")
-    public void messageIsDisplaeyedOnCurrentPage(String text) {
-        System.out.println("Message is displayed");
+    public void messageIsDisplayedOnCurrentPage(String text) {
+        Assert.assertTrue(isTextPresent(text));
+        System.out.println("Message "+text+" is displayed");
+    }
+
+    @Then("^send button is disable$")
+    public void buttonIsDisable(){
+        Assert.assertFalse(driver.findElement(By.xpath(MessagesPage.getSendButton())).isEnabled());
+        System.out.println("Button is disable");
     }
 }
