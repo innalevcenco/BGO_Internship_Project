@@ -11,6 +11,7 @@ import pages.AdvancedFilterPage;
 import pages.CommonActions;
 import pages.HomePage;
 import pages.PersonalizedPage;
+import pages.MovieSearchResultPages;
 
 public class AdvancedFilterSteps extends CommonActions {
 
@@ -61,35 +62,54 @@ public class AdvancedFilterSteps extends CommonActions {
         System.out.println("Result of search page is displayed");
     }
 
-    @When("^user clicks on the 'Notes' button$")
-    public void userClicksOnTheNotesButton() {
-        actions.moveToElement(driver.findElement(By.xpath(AdvancedFilterPage.getNotesButton()))).perform();
-        click(AdvancedFilterPage.getNotesButton());
-        actions.moveToElement(driver.findElement(By.xpath(AdvancedFilterPage.getNotesFrame())));
+    @When("^user clicks on 'country' field$")
+    public void clicksOnCountryField() {
+        click(AdvancedFilterPage.getCountryFiled());
     }
 
-    @Then("^'Notes' frame is displayed$")
-    public void notesFrameIsDisplayed() {
-        isDisplayed(AdvancedFilterPage.getNotesFrame());
-        System.out.println("Frame is displayed");
+    @When("^user select 'Russia' field$")
+    public void clicksOnSecondOptionField() {
+        click(AdvancedFilterPage.getRussiaOptionField());
     }
 
-    @When("^user writes note '(.*)'$")
-    public void userWritesNote(String note) {
-        writeText(AdvancedFilterPage.getNotesFrame(), note);
-        System.out.println("PAssed1");
+    @When("^user clicks on 'genre' field$")
+    public void clicksOnGenreField() {
+        click(AdvancedFilterPage.getGenreField());
     }
 
-    @Then("^clicks button 'Отправить'$")
-    public void userClicksButtonSend() {
-        click(AdvancedFilterPage.getNotesButton());
-        System.out.println("PAssed2");
+    @When("^user chooses 'comedy' option$")
+    public void choosesOptionComedy() {
+        click(AdvancedFilterPage.getComedyOptionField());
     }
 
-    @Then("^text '(.*)' appears on the page$")
-    public void verifyingSentText(String note) {
-        waitVisibility(PersonalizedPage.getNoteAdditionalFrame());
-        Assert.assertTrue(isTextPresent(note));
-        System.out.println("PAssed3");
+    @And("^user clicks on the checkbox$")
+    public void userClicksOnCheckbox() {
+        click(AdvancedFilterPage.getComedyOptionField());
+    }
+
+    @Then("^movie page is displayed$")
+    public void moviePageIsDisplayed() {
+        String filmURL = "https://www.kinopoisk.ru/film/972889/";
+        Assert.assertEquals(MovieSearchResultPages.getBadcomedianMovieDetails(), filmURL);
+    }
+
+    @When("^user clicks on 'Note' button from displayed movie$")
+    public void clickOnNote() {
+        click(MovieSearchResultPages.getMovieNote());
+    }
+
+    @When("^user fills 'Note' field$")
+    public void addComment() {
+        writeText(MovieSearchResultPages.getMovieNote(), "I will watch this film later");
+    }
+
+    @And("^user clicks on 'Save' note button$")
+    public void userClicksOnSaveNoteButton() {
+        click(MovieSearchResultPages.getSaveNoteButton());
+    }
+
+    @Then("^new note is displayed$")
+    public void newNoteIsDisplayed() {
+        Assert.assertNotEquals("Should Add an assert", "");
     }
 }
