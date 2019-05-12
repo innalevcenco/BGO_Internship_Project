@@ -6,7 +6,6 @@ import cucumber.api.java.en.When;
 import pages.CommonActions;
 import pages.HomePage;
 
-
 public class HomeSteps extends CommonActions {
 
     public HomeSteps() {
@@ -14,8 +13,7 @@ public class HomeSteps extends CommonActions {
 
     @Given("^home page is open$")
     public void verificationLocation() {
-        driver.get(HomePage.getHomePage()); //TODO udaliti!!!
-        //waitVisibility(HomePage.getLogOutButton());//TODO Vernuti
+        waitVisibility(HomePage.getLogOutButton());
         assertEqualsURL(HomePage.getHomePage(), driver.getCurrentUrl());
         System.out.println("Home page is displayed");
     }

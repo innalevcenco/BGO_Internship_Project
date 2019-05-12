@@ -20,12 +20,6 @@ public abstract class CommonActions {
     //TODO like driver
     public WebDriverWait wait = new WebDriverWait(driver, 15);
 
-//    //Constructor
-//    public CommonActions(WebDriver driver, WebDriverWait wait) {
-//        this.driver = driver;
-//        this.wait = wait;
-//    }
-
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(elementBy)));
@@ -50,6 +44,8 @@ public abstract class CommonActions {
 
     //Write Text
     public void writeText(String elementBy, String text) {
+        waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).clear();
         waitVisibility(elementBy);
         driver.findElement(By.xpath(elementBy)).sendKeys(text);
     }
@@ -97,6 +93,5 @@ public abstract class CommonActions {
     //Work with dropDown Lists
     public void dropDownList(String elementBy, String text){
         Select select = new Select(driver.findElement(By.xpath(elementBy)));
-
     }
 }

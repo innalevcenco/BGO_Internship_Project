@@ -15,7 +15,7 @@ public class PersonalizedPageSteps extends CommonActions {
         System.out.println("the list of actors is displayed");
     }
 
-    @Then("^user is redirected on the Actor '(.*)' page$")
+    @Then("^user redirected on the '(.*)' page$")
     public void userIsRedirectedOnTheActorPage(String text) {
         waitVisibility(PersonalizedPage.getPhotoInfoTable());
         Assert.assertTrue(isTextPresent(text));
@@ -30,10 +30,10 @@ public class PersonalizedPageSteps extends CommonActions {
     }
 
     @Then("^folder '(.*)' appears on the page$")
-    public void folderIsAppearOnThePage(String text){
+    public void folderIsAppearOnThePage(String text) {
         waitVisibility(PersonalizedPage.getActorsFolder());
         Assert.assertTrue(isTextPresent(text));
-        System.out.println("folder "+text+" is appear on the page");
+        System.out.println("folder " + text + " is appear on the page");
         //delete added actor from folder
         click(PersonalizedPage.getAddToCategoryActorsButton());
         System.out.println("user clicks on the 'Actors' list");

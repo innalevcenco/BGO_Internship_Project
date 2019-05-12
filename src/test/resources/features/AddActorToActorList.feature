@@ -1,8 +1,8 @@
-#@UI @test
-#Feature: Add actor to List
+#@UI @test @IL
+#Feature: Add actor to the List
 #
 #  Background:
-#    Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'Idiotin@153' password
+#    Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'ILoveTesting' password
 #
 #  Scenario Outline: User search the actor and add them to the actor list
 #    Given home page is open
@@ -10,7 +10,7 @@
 #    And user clicks on the 'HomeSearch' button
 #    Then the list of actors is displayed
 #    When user clicks on the first link
-#    Then user is redirected on the Actor '<actor>' page
+#    Then user redirected on the '<actor>' page
 #    When user clicks on the 'Actors' folder
 #    Then folder 'Актёры' appears on the page
 #    Examples:
