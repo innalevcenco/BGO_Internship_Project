@@ -5,16 +5,18 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.assertTrue;
 
 public abstract class CommonActions {
 
-    public WebDriver driver = StepHooks.getDriver();
+    StepHooks stepHooks = new StepHooks();
+    public WebDriver driver = stepHooks.getDriver();
 //    public WebDriverWait wait;
 
     //TODO like driver
@@ -31,8 +33,13 @@ public abstract class CommonActions {
     }
 
     //wait specific time
-    public void waitSpecificAmountOfTime(int seconds) {
+    public void waitSpecificAmountOfTime(int seconds){
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+    //Wait element to be clickable
+    public void waitClickable(String elementBy) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementBy)));
     }
 
     //Click Method
@@ -63,6 +70,7 @@ public abstract class CommonActions {
     //Write Text
     public String writeText(String elementBy, String text) {
         waitVisibility(elementBy);
+        driver.findElement(By.xpath(elementBy)).clear();
         driver.findElement(By.xpath(elementBy)).sendKeys(text);
         return elementBy;
     }
@@ -76,7 +84,7 @@ public abstract class CommonActions {
     //Enter
     public void enter(String elementBy) {
         waitVisibility(elementBy);
-        driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath(elementBy)).sendKeys(text);
     }
 
     //Read Text
@@ -112,8 +120,30 @@ public abstract class CommonActions {
         Assert.assertEquals(readText(elementBy), expectedText);
     }
 
+    //Enter
+    public void enter(String elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(By.id(elementBy)).sendKeys(Keys.ENTER);
+    }
+
     public void assertEqualsURL(String currentURL, String expectedURL) {
         Assert.assertEquals(currentURL, expectedURL);
+    }
+
+    //IsTextPresent
+    public boolean isTextPresent(String text) {
+        boolean textFound = false;
+        try {
+            driver.getPageSource().contains(text);
+            textFound = true;
+        } catch (Exception e) {
+            textFound = false;
+        }
+        return textFound;
+    }
+    //Work with dropDown Lists
+    public void dropDownList(String elementBy, String text){
+        Select select = new Select(driver.findElement(By.xpath(elementBy)));
     }
 
     public void assertIsTrue(String textIfFalse, boolean element) {

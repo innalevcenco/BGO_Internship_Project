@@ -6,7 +6,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.CommonActions;
 import pages.MoviePage;
-import pages.MovieSearchResultPages;
 
 import java.util.concurrent.TimeUnit;
 

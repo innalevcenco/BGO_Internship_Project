@@ -1,5 +1,4 @@
-@functional
-Feature: Add movies to lists
+Feature: Add list and movies in the lists
 
   Background:
     Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password

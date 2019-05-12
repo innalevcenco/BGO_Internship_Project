@@ -7,7 +7,9 @@ import pages.LoginPage;
 
 public class LoginSteps {
 
-    private WebDriver driver =  StepHooks.getDriver();
+    StepHooks stepHooks = new StepHooks();
+
+    private WebDriver driver = stepHooks.getDriver();
     private LoginPage loginPage = new LoginPage(driver);
 
     @Given("^user is login on '(.*)' with '(.*)' username and '(.*)' password$")
