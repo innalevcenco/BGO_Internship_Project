@@ -14,6 +14,7 @@ public class StepHooks {
 
     @After
     public void afterScenario() {
+
         Driver.quit();
     }
 }

@@ -7,7 +7,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-
 public class Driver {
 
     private static final String CHROME_PROPERTY = "webdriver.chrome.driver";
@@ -52,8 +51,8 @@ public class Driver {
         return driver;
     }
 
-    public static void quit(){
+    public static void quit() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
 }

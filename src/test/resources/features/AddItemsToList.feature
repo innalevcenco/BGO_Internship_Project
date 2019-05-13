@@ -20,7 +20,7 @@ Feature: Add items in the lists
       | Beast      |
 
   @acastravet
-  Scenario: Add the random chosed movie to watch favourite list
+  Scenario: Add the random chosed movie to favourite list
     Given user accesses the random movie search feature
     And user chooses a period of years
     And user adds a country
@@ -54,12 +54,3 @@ Feature: Add items in the lists
       | actor         |
       | Jeremy Renner |
       | Hugh Laurie   |
-
-
-
-
-
-
-
-
-

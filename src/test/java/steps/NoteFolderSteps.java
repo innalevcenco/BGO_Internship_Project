@@ -12,6 +12,7 @@ public class NoteFolderSteps extends CommonActions {
     public void userClicksOnRemoveButton() throws AWTException {
         click(NoteFolderPage.getRemoveNoteButton());
         clickOnEnterKey();
+        log.info("'Remove' button is clicked" );
     }
 
 }

@@ -26,25 +26,35 @@ public class WeekendResultsMovieChooseSteps extends CommonActions {
     public void userFiltersTableDescendentlyForAllProfits() {
         int fundsBeforeFiltering = weekendResultsPage.parseIntFromAllFundsTopList();
         click(WeekendResultsPage.getFilterByAllFunds());
+        log.info("user filters table by all funds");
+
         waitSpecificAmountOfTime(4);
         int fundsAfterFiltering = weekendResultsPage.parseIntFromAllFundsTopList();
         assertIsTrue("Step failed: table was not filtered/was not filtered correclty ",fundsAfterFiltering>=fundsBeforeFiltering);
+        log.info("table is filtered");
+
     }
 
     @Then("^user accesses the first listed movie$")
     public void userAccessesTheFirstListedMovie() {
         click(WeekendResultsPage.getFirstMovieFromList());
+        log.info("user accesses the first listed movie");
     }
 
     @And("^user clicks on watch later$")
     public void userClicksOnWatchLater() {
         click(MoviePage.getWatchLaterButton());
+        log.info("user clicks on watch later button");
     }
 
     @Then("^movie is added to watch later$")
     public void movieIsAddedToWatchLater(){
+        refresh();
+        waitSpecificAmountOfTime(5);
         boolean exists= moviePage.checkIfMovieAddedToWatchLaterList();
         assertIsTrue("Step failed: movie was not added to watch later list ",exists);
+        log.info("movie is added to watch later list");
+
     }
 
 

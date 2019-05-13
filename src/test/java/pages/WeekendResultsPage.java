@@ -1,12 +1,13 @@
 package pages;
 
 import browser.Driver;
-import hooks.StepHooks;
+import commonActions.CommonActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class WeekendResultsPage {
+public class WeekendResultsPage extends CommonActions {
     public WebDriver driver = Driver.getDriver();
+
 
     private static final String RESULTS_IN_DOLLARS ="//*[@id=\"block_left\"]/div/table[1]/tbody/tr[4]/td/table[1]/tbody/tr[12]/td[2]/table/tbody/tr[1]/td/a";
     private static final String FILTER_BY_ALL_FUNDS="//*[@id=\"block_left\"]/div/table[1]/tbody/tr[4]/td/table[1]/tbody/tr[1]/td[5]/b/a";
@@ -29,6 +30,7 @@ public class WeekendResultsPage {
     public int parseIntFromAllFundsTopList(){
         String stringNumber = driver.findElement(By.xpath(SUM_OF_MONEY_FROM_ALL_FUNDS)).getText();
         String finalStringNumber="";
+        log.info("parsing int fro string...");
         for (int i = 0; i < stringNumber.length() - 10; i++) {
             if(stringNumber.charAt(i)==(' ')){
                 continue;
