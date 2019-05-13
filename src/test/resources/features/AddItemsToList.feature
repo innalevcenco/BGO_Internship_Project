@@ -31,14 +31,14 @@ Feature: Add items in the lists
     And user clicks on favourite button
     Then the movie is added to favourite list
 
-#  @acastravet
-#  Scenario: Filter the weekend result table to display the most profitable movie and add it to watch later list
-#    Given user accesses the weekend results
-#    And user chosses to see the results in dollars
-#    And user filters table descendently for all profits
-#    Then user accesses the first listed movie
-#    And user clicks on watch later
-#    Then movie is added to watch later
+  @acastravet
+  Scenario: Filter the weekend result table to display the most profitable movie and add it to watch later list
+    Given user accesses the weekend results
+    And user chosses to see the results in dollars
+    And user filters table descendently for all profits
+    Then user accesses the first listed movie
+    And user clicks on watch later
+    Then movie is added to watch later
 
   @ilevcenco
   Scenario Outline: User search the actor and add them to the actor list

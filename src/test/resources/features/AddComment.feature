@@ -4,15 +4,15 @@ Feature: Add comment to the movie
   Background:
     Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
 
-#  @acastravet
-#  Scenario:Comment on a news article
-#    Given user accesses news page
-#    And user clicks on a date from the calendar
-#    And user accesses the first article
-#    When article is displayed
-#    Then user writes the comment "Текст:" textfield
-#    And user clicks "отправить" button
-#    Then the comment is added
+  @acastravet
+  Scenario:Comment on a news article
+    Given user accesses news page
+    And user clicks on a date from the calendar
+    And user accesses the first article
+    When article is displayed
+    Then user writes the comment "Текст:" textfield
+    And user clicks "отправить" button
+    Then the comment is added
 
   @aciuvaga
   Scenario Outline: New note is added to the movie

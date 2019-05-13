@@ -1,6 +1,6 @@
 package pages;
 
-import hooks.StepHooks;
+import browser.Driver;
 import logger.LoggerConfig;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public abstract class CommonActions extends LoggerConfig {
 
-    public WebDriver driver = StepHooks.getDriver();
+    public WebDriver driver = Driver.getDriver();
 //    public WebDriverWait wait;
 
     //TODO like driver
