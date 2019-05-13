@@ -1,7 +1,7 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import commonActions.CommonActions;
+import cucumber.api.java.en.And;
 import pages.NoteFolderPage;
 
 import java.awt.*;

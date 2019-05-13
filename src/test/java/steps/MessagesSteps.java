@@ -1,11 +1,11 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import commonActions.CommonActions;
 import pages.HomePage;
 import pages.MessagesPage;
 
@@ -22,40 +22,40 @@ public class MessagesSteps extends CommonActions {
     @Then("^dropdown list is displayed$")
     public void elementIsDisplayed() {
         isDisplayed(HomePage.getMessagesButton());
-        System.out.println("Element 'Message link' is displayed");
+        log.info("Element 'Message link' is displayed");
     }
 
     @When("^user clicks on 'Messages' link$")
     public void userClicksOnMessagesLink() {
         click(HomePage.getMessagesButton());
-        System.out.println("Button 'Logo' is clicked");
+        log.info("Button 'Logo' is clicked");
     }
 
     @Then("^user is redirected to the inbox page$")
     public void redirectedMethod() {
         waitVisibility(getNewMessageLink());
         assertEqualsURL(getInboxPageUrl(), driver.getCurrentUrl());
-        System.out.println("Inbox page is displayed");
+        log.info("Inbox page is displayed");
     }
 
     @When("^user clicks on the 'new message' link$")
     public void userClicksOnTheNewMessageLink() {
         click(getNewMessageLink());
-        System.out.println("New message link is clicked");
+        log.info("New message link is clicked");
     }
 
     @Then("^user redirects on the 'Send Message' page$")
     public void userIsRedirectedOnTheSendMessagePage() {
         waitVisibility(getNewMessageText());
         Assert.assertTrue(isTextPresent("Новое сообщение"));
-        System.out.println("Send Message page is displayed");
+        log.info("Send Message page is displayed");
     }
 
     @When("^user enters '(.*)' and '(.*)'$")
     public void userEntersReceivers(String receiver, String message) {
         writeText(getRECEIVER(),receiver);
         writeText(getMessageField(), message);
-        System.out.println("Step PASSED");
+        System.out.println("user enters '"+receiver+"' and '"+message+"'");
     }
 
     @And("^user clicks on 'Send' button$")
@@ -67,18 +67,18 @@ public class MessagesSteps extends CommonActions {
             e.printStackTrace();
         }
         driver.findElement(By.xpath(getSendButton())).click();
-        System.out.println("Button is clicked");
+        log.info("Send button is clicked");
     }
 
     @Then("^'(.*)' is displayed on current page$")
     public void messageIsDisplayedOnCurrentPage(String text) {
         Assert.assertTrue(isTextPresent(text));
-        System.out.println("Message "+text+" is displayed");
+        log.info("Message "+text+" is displayed");
     }
 
     @Then("^send button is disable$")
     public void buttonIsDisable(){
         Assert.assertFalse(driver.findElement(By.xpath(MessagesPage.getSendButton())).isEnabled());
-        System.out.println("Button is disable");
+        log.info("Send button is disable");
     }
 }

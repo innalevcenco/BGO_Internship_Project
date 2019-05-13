@@ -1,8 +1,6 @@
 package pages;
 
-import commonActions.CommonActions;
-
-public class AdvancedFilterPage extends CommonActions {
+public class AdvancedFilterPage {
 
     private static final String ADVANCED_SEARCH_PAGE_URL = "https://www.kinopoisk.ru/s/";
     private static final String COUNTRY_FIELD = "//*[@id='country']";

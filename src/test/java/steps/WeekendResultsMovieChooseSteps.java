@@ -1,9 +1,9 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import commonActions.CommonActions;
 import pages.HomePage;
 import pages.MoviePage;
 import pages.WeekendResultsPage;

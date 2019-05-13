@@ -1,10 +1,9 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import commonActions.CommonActions;
 import org.junit.Assert;
-import pages.MoviePage;
 import pages.NewFolderPage;
 import pages.WillWatchFolderPage;
 
