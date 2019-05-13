@@ -1,13 +1,21 @@
 package pages;
 
+import commonActions.CommonActions;
+
 public class AdvancedFilterPage extends CommonActions {
 
     private static final String ADVANCED_SEARCH_PAGE_URL = "https://www.kinopoisk.ru/s/";
-    private static final String resultPageURL = "https://www.kinopoisk.ru/lists/m_act[country]/1/";
     private static final String countryFiled = "//*[@id='country']";
     private static final String actorField = "//*[@id='formSearchMain']/input[8]";
+    private static final String GENRE_FIELD = "//*[@id='m_act[genre]']";
     private static final String searchButton = "//*[@id='formSearchMain']/input[11]";
     private static final String resultOfSearchBlock = "//*[@id='block_left_pad']/div/div[2]";
+    private static final String YEAR_FIELD = "//*[@id='year']";
+    private static final String COMEDY_OPTION_FIELD2 = "//*[@id='m_act[genre]']/option[6]";
+
+    public static String getComedyOptionField2() {
+        return COMEDY_OPTION_FIELD2;
+    }
 
     public static String getCountryFiled() {
         return countryFiled;
@@ -25,11 +33,16 @@ public class AdvancedFilterPage extends CommonActions {
         return ADVANCED_SEARCH_PAGE_URL;
     }
 
-    public static String getResultPageURL() {
-        return resultPageURL;
-    }
-
     public static String getResultOfSearchBlock() {
         return resultOfSearchBlock;
     }
+
+    public static String getYearField() {
+        return YEAR_FIELD;
+    }
+
+    public static String getGenreField() {
+        return GENRE_FIELD;
+    }
+
 }

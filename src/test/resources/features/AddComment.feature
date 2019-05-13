@@ -1,34 +1,35 @@
+@test
 Feature: Add comment to the movie
 
   Background:
-    Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
+    Given user is login on 'https://www.kinopoisk.ru/' with 'ariadnaciuvaga' username and 'abc12345' password
 
-#  Scenario: New comment is added to a specified movie
-#    Given home page is open
-#    When user clicks on 'Расширенный поиск' button
-#    And user clicks on country field '+ страна:'
-#    And user chooses 'CШA'
-#    And user clicks on genre field '+ жанр:'
-#    And user chooses 'комедия' and check 'комедия' mark
-#    And user clicks on 'поиск' button
-#    Then search results are  displayed
-#    When user clicks on the chosen 'movie'
-#    Then movie page is displayed
-#    When user adds a comment to the movie filling 'Текст:' and 'Заголовок:' fields
-#    And user clicks on review type field 'тип рецензии'
-#    And user chooses positive field 'положительная'
-#    And user clicks on submit button отправитъ'
-#    Then the new changes are saved
-#    When user clicks on 'profile' button on the top, at the right side
-#    And user clicks on 'alexandrugrama' button
-#    Then the new comment is displayed on the customer account
+  @acastravet
+  Scenario:Comment on a news article
+    Given user accesses news page
+    And user clicks on a date from the calendar
+    And user accesses the first article
+    When article is displayed
+    Then user writes the comment "Текст:" textfield
+    And user clicks "отправить" button
+    Then the comment is added
 
-#  @test
-#  Scenario:Comment on a news article
-#    Given user accesses news page
-#    And user clicks on a date from the calendar
-#    And user accesses the first article
-#    When article is displayed
-#    Then user writes the comment "Текст:" textfield
-#    And user clicks "отправить" button
-#    Then the comment is added
+  @aciuvaga
+  Scenario Outline: New note is added to the movie
+    Given home page is open
+    And user clicks on 'Advanced Filter' button
+    And user select '<country>' country
+    And user clicks on 'genre' field
+    And user chooses 'an option' from option field
+    And user clicks on the checkbox
+    And user clicks on the 'Search' button
+    And user clicks on the first link
+    And user clicks on 'Note' button
+    And user fills 'Note' field with: <note>
+    When user clicks on 'Save' note button
+    Then <note> is added to the movie
+    And user clicks on 'Remove' button
+    Examples:
+      | country | note                         |
+      | Россия  | I will watch this film later |
+

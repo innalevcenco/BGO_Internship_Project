@@ -6,19 +6,19 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import pages.CommonActions;
+import commonActions.CommonActions;
 
 import java.util.Random;
 
 public class RandomSearchPage extends CommonActions {
 
     public WebDriver driver = StepHooks.getDriver();
-    private static final String CHOOSE_COUNTRY = "//*[@id=\"countryListTitle\"]";
-    private static final String CHOOSE_GENRE = "//*[@id=\"genreListTitle\"]";
-    private static final String LEFT_ARROW = "//*[@id=\"review_procentrange\"]/a[1]";
-    private static final String RIGHT_ARROW ="//*[@id=\"review_procentrange\"]/a[2]";
-    private static final String FIND_MOVIE_BUTTON="//*[@id=\"search\"]";
-    private static final String FOUND_MOVIE_TITLE="//*[@id=\"page\"]/div[3]/div[3]/div/div[2]/div[1]/div[1]/a";
+    private static final String CHOOSE_COUNTRY = "//*[@id='countryListTitle']";
+    private static final String CHOOSE_GENRE = "//*[@id='genreListTitle']";
+    private static final String LEFT_ARROW = "//*[@id='review_procentrange']/a[1]";
+    private static final String RIGHT_ARROW ="//*[@id='review_procentrange']/a[2]";
+    private static final String FIND_MOVIE_BUTTON="//*[@id='search']";
+    private static final String FOUND_MOVIE_TITLE="//*[@id='page']/div[3]/div[3]/div/div[2]/div[1]/div[1]/a";
 
 
     public static String getFoundMovieTitle() { return FOUND_MOVIE_TITLE; }
@@ -55,7 +55,6 @@ public class RandomSearchPage extends CommonActions {
     }
 
     public void clickFindMovieButton(){
-
         driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
     }
 
