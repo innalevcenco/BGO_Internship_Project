@@ -1,10 +1,10 @@
-@test @IL
+@functional
 Feature: Test of searching functionality
 
   Background:
     Given user is login on 'https://www.kinopoisk.ru/' with 'ilevcenco' username and 'ILoveTesting' password
 
-  @IL
+  @ilevcenco
   Scenario Outline: User is able to search movies using advanced filter
     Given home page is open
     When user clicks on 'Advanced Filter' button

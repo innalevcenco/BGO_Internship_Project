@@ -5,17 +5,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.AdvancedFilterPage;
-import pages.CommonActions;
+import commonActions.CommonActions;
 import pages.HomePage;
-import pages.PersonalizedPage;
-import pages.MovieSearchResultPages;
+import pages.MovieSearchResultPage;
 
 public class AdvancedFilterSteps extends CommonActions {
-
-    Actions actions = new Actions(driver);
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
@@ -62,14 +58,14 @@ public class AdvancedFilterSteps extends CommonActions {
         System.out.println("Result of search page is displayed");
     }
 
-    @When("^user clicks on 'country' field$")
-    public void clicksOnCountryField() {
-        click(AdvancedFilterPage.getCountryFiled());
+    @When("^user chooses 'an option' from option field$")
+    public void chooseAnOption() {
+        click(AdvancedFilterPage.getComedyOptionField2());
     }
 
-    @When("^user select 'Russia' field$")
-    public void clicksOnSecondOptionField() {
-        click(AdvancedFilterPage.getRussiaOptionField());
+    @And("^user clicks on the checkbox$")
+    public void userClicksOnCheckbox() {
+        click(AdvancedFilterPage.getComedyOptionField2());
     }
 
     @When("^user clicks on 'genre' field$")
@@ -77,39 +73,12 @@ public class AdvancedFilterSteps extends CommonActions {
         click(AdvancedFilterPage.getGenreField());
     }
 
-    @When("^user chooses 'comedy' option$")
-    public void choosesOptionComedy() {
-        click(AdvancedFilterPage.getComedyOptionField());
-    }
-
-    @And("^user clicks on the checkbox$")
-    public void userClicksOnCheckbox() {
-        click(AdvancedFilterPage.getComedyOptionField());
-    }
-
-    @Then("^movie page is displayed$")
-    public void moviePageIsDisplayed() {
-        String filmURL = "https://www.kinopoisk.ru/film/972889/";
-        Assert.assertEquals(MovieSearchResultPages.getBadcomedianMovieDetails(), filmURL);
-    }
-
-    @When("^user clicks on 'Note' button from displayed movie$")
-    public void clickOnNote() {
-        click(MovieSearchResultPages.getMovieNote());
-    }
-
-    @When("^user fills 'Note' field$")
-    public void addComment() {
-        writeText(MovieSearchResultPages.getMovieNote(), "I will watch this film later");
+    @And("^user clicks on 'Note' button$")
+    public void clickNoteButton() {
+        click(MovieSearchResultPage.getMovieNoteButton());
     }
 
     @And("^user clicks on 'Save' note button$")
     public void userClicksOnSaveNoteButton() {
-        click(MovieSearchResultPages.getSaveNoteButton());
-    }
-
-    @Then("^new note is displayed$")
-    public void newNoteIsDisplayed() {
-        Assert.assertNotEquals("Should Add an assert", "");
-    }
+        click(MovieSearchResultPage.getSaveNoteButton()); }
 }

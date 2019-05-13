@@ -1,11 +1,11 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-import pages.CommonActions;
 import pages.HomePage;
+
 
 public class HomeSteps extends CommonActions {
 
@@ -19,11 +19,6 @@ public class HomeSteps extends CommonActions {
         System.out.println("Home page is displayed");
     }
 
-   /* @When("^user searches for (.*) actor$")
-    public void userSearchActor(String text) {
-        writeText(HomePage.getSearchField(), text);
-    }
-*/
     @When("^user clicks on 'Search' button$")
     public void userClicksOnMovieButton() {
         click(HomePage.getRandSearchButton());

@@ -5,7 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import pages.CommonActions;
+import commonActions.CommonActions;
 import pages.HomePage;
 import pages.MessagesPage;
 
@@ -34,7 +34,7 @@ public class MessagesSteps extends CommonActions {
     @Then("^user is redirected to the inbox page$")
     public void redirectedMethod() {
         waitVisibility(getNewMessageLink());
-        assertEqualsURL(getInboxPageURL(), driver.getCurrentUrl());
+        assertEqualsURL(getInboxPageUrl(), driver.getCurrentUrl());
         System.out.println("Inbox page is displayed");
     }
 
@@ -53,7 +53,7 @@ public class MessagesSteps extends CommonActions {
 
     @When("^user enters '(.*)' and '(.*)'$")
     public void userEntersReceivers(String receiver, String message) {
-        writeText(getReceiver(),receiver);
+        writeText(getRECEIVER(),receiver);
         writeText(getMessageField(), message);
         System.out.println("Step PASSED");
     }

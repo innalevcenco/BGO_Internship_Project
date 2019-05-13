@@ -21,14 +21,13 @@ public class StepHooks {
     }
 
     @Before
-    public void launchChromeDriver() {
+    public void launchDriver() {
         setDriver(Driver.initializeDriver());
         getDriver().manage().window().maximize();
     }
 
     @After
     public void afterScenario() {
-        driver.manage().deleteAllCookies();
         driver.close();
     }
 }

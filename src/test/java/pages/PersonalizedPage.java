@@ -7,7 +7,6 @@ public class PersonalizedPage {
     private static final String addToCategoryActorsButton = "//*[@id='div_mustsee_main']/div/div/div/div/dl/dd[2]";
     private static final String arrow = "//*[@id='div_mustsee_main']/div/div/div[1]/span[2]/div";
     private static final String actorsFolder = "//*[@id='div_mustsee_main']/div/div/ul";
-    private static final String NOTE_ADDITIONAL_FRAME = "//*[@id='txt_film_notice']/div[1]";
 
     public static String getBlockWithResultSearch() {
         return blockWithResultSearch;
@@ -29,7 +28,4 @@ public class PersonalizedPage {
         return arrow;
     }
 
-    public static String getNoteAdditionalFrame() {
-        return NOTE_ADDITIONAL_FRAME;
-    }
 }
