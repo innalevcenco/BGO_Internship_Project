@@ -2,7 +2,7 @@
 Feature: Add comment to a news article
 
   Background:
-    Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
+    Given user is login on 'https://www.kinopoisk.ru/' with 'ariadnaciuvaga' username and 'abc12345' password
 
   @acastravet
   Scenario:Comment on a news article
@@ -30,6 +30,6 @@ Feature: Add comment to a news article
     Then <note> is added to the movie
     And user clicks on 'Remove' button
     Examples:
-      | country |note|
-      | Россия |  I will watch this film later   |
+      | country | note                         |
+      | Россия  | I will watch this film later |
 

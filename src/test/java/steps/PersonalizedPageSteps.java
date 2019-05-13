@@ -3,7 +3,7 @@ package steps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import pages.CommonActions;
+import commonActions.CommonActions;
 import pages.PersonalizedPage;
 
 public class PersonalizedPageSteps extends CommonActions {

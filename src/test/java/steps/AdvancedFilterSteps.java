@@ -5,16 +5,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.AdvancedFilterPage;
-import pages.CommonActions;
+import commonActions.CommonActions;
 import pages.HomePage;
-import pages.MovieSearchResultPages;
+import pages.MovieSearchResultPage;
 
 public class AdvancedFilterSteps extends CommonActions {
-
-    Actions actions = new Actions(driver);
 
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
@@ -62,7 +59,7 @@ public class AdvancedFilterSteps extends CommonActions {
     }
 
     @When("^user chooses 'an option' from option field$")
-    public void chooseOption() {
+    public void chooseAnOption() {
         click(AdvancedFilterPage.getComedyOptionField2());
     }
 
@@ -78,16 +75,10 @@ public class AdvancedFilterSteps extends CommonActions {
 
     @And("^user clicks on 'Note' button$")
     public void clickNoteButton() {
-        click(MovieSearchResultPages.getMovieNoteButton());
-    }
-
-    @And("^user fills 'Note' field with: (.*)$")
-    public void addComment(String note) {
-        writeText(MovieSearchResultPages.getMovieNoteField(), note);
+        click(MovieSearchResultPage.getMovieNoteButton());
     }
 
     @And("^user clicks on 'Save' note button$")
     public void userClicksOnSaveNoteButton() {
-        click(MovieSearchResultPages.getSaveNoteButton());
-    }
+        click(MovieSearchResultPage.getSaveNoteButton()); }
 }
