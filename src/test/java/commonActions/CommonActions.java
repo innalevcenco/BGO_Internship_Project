@@ -1,6 +1,6 @@
 package commonActions;
 
-import hooks.StepHooks;
+import browser.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.assertTrue;
 
 public abstract class CommonActions {
-    StepHooks stepHooks = new StepHooks();
-    public WebDriver driver = stepHooks.getDriver();
+
+    public WebDriver driver = Driver.getDriver();
 
     public WebDriverWait wait = new WebDriverWait(driver, 50);
 
@@ -29,6 +29,7 @@ public abstract class CommonActions {
     public void waitClickable(String elementBy) {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementBy)));
     }
+
     //wait specific time
     public void waitSpecificAmountOfTime(int seconds) {
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
