@@ -12,7 +12,6 @@ import pages.*;
 
 public class CommentNewsPaperSteps extends CommonActions {
 
-
     NewsPage newsPage = new NewsPage();
     NewsArticlePage newsArticlePage = new NewsArticlePage();
 

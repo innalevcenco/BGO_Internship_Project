@@ -52,10 +52,10 @@ public class WeekendResultsMovieChooseSteps extends CommonActions {
         refresh();
         waitSpecificAmountOfTime(5);
         boolean exists= moviePage.checkIfMovieAddedToWatchLaterList();
+        moviePage.removeFromWAtchLaterList();
+        waitSpecificAmountOfTime(5);
         assertIsTrue("Step failed: movie was not added to watch later list ",exists);
         log.info("movie is added to watch later list");
 
     }
-
-
 }

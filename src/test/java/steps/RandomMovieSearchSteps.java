@@ -73,9 +73,10 @@ public class RandomMovieSearchSteps extends CommonActions{
     @Then("^the movie is added to favourite list$")
     public void theMovieIsAddedToWatchLaterList() {
         boolean exists = moviePage.checkIfMovieAddedToFavouriteList();
+        moviePage.removeFromFavoritesList();
+        waitSpecificAmountOfTime(5);
         assertIsTrue("Step failed: Movie was not added to favourite list",exists);
         log.info("the movie is added to favourite list");
     }
-
 
 }

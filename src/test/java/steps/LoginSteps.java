@@ -18,5 +18,6 @@ public class LoginSteps {
         loginPage.buttonClick(loginPage.usernameEnterButton());
         loginPage.setPassword(password);
         loginPage.buttonClick(loginPage.passwordEnterButton());
+
     }
 }
