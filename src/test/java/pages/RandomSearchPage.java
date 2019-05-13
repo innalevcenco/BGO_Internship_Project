@@ -1,5 +1,6 @@
 package pages;
 
+import browser.Driver;
 import hooks.StepHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,7 +13,7 @@ import java.util.Random;
 
 public class RandomSearchPage extends CommonActions {
 
-    public WebDriver driver = StepHooks.getDriver();
+    public WebDriver driver = Driver.getDriver();
     private static final String CHOOSE_COUNTRY = "//*[@id='countryListTitle']";
     private static final String CHOOSE_GENRE = "//*[@id='genreListTitle']";
     private static final String LEFT_ARROW = "//*[@id='review_procentrange']/a[1]";

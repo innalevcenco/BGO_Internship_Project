@@ -1,6 +1,7 @@
 package pages;
 
 
+import browser.Driver;
 import commonActions.CommonActions;
 import hooks.StepHooks;
 import org.openqa.selenium.By;
@@ -17,7 +18,7 @@ public class MoviePage extends CommonActions {
     private static final String CREATE_NEW_FOLDER = "//div[@class='createButton']";
     private static final String MOVIE_COMMENT = "//*[@id='txt_film_notice']/div[1]";
     private static final String WATCH_LATER_LIST_BUTTON = "//span[@class='header-fresh-partial-component__film-to-watch-button-text']";
-    public WebDriver driver = StepHooks.getDriver();
+    public WebDriver driver = Driver.getDriver();
 
     public static String getMovieComment() {
         return MOVIE_COMMENT;

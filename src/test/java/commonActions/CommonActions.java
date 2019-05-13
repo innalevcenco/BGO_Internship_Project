@@ -1,7 +1,6 @@
 package commonActions;
 
 import hooks.StepHooks;
-import logger.LoggerConfig;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,9 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.assertTrue;
 
-public abstract class CommonActions extends LoggerConfig {
-    StepHooks stepHooks = new StepHooks();
-    public WebDriver driver = stepHooks.getDriver();
+public abstract class CommonActions {
+
+    public WebDriver driver = Driver.getDriver();
 
     public WebDriverWait wait = new WebDriverWait(driver, 50);
 

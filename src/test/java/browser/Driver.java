@@ -16,30 +16,44 @@ public class Driver {
     private static final String EXPLORER_PATH = "src/test/resources/drivers/IEdriver.exe";
     private static final String FIREFOX_PROPERTY = "webdriver.gecko.driver";
     private static final String FIREFOX_PATH = "src/test/resources/drivers/geckodriver.exe";
-    private static WebDriver driver;
-
-
-    public Driver() {
-    }
+    private static WebDriver driver = null;
 
     public static WebDriver initializeDriver() {
+
         ConfigFileReader reader = new ConfigFileReader();
-//        if (driver == null) {
-        if (reader.getBrowserName().equalsIgnoreCase("chrome")) {
-            System.setProperty(CHROME_PROPERTY, CHROME_PATH);
-            driver = new ChromeDriver();
-        } else if (reader.getBrowserName().equalsIgnoreCase("firefox")) {
-            System.setProperty(FIREFOX_PROPERTY, FIREFOX_PATH);
-            driver = new FirefoxDriver();
-            driver.get("http://seleniumhq.com");
-        } else if (reader.getBrowserName().equalsIgnoreCase("explorer")) {
-            System.setProperty(EXPLORER_PROPERTY, EXPLORER_PATH);
-            driver = new InternetExplorerDriver();
-        } else {
-            System.out.println("driver details are not specified in the Configuration.properties file");
-            driver = new EdgeDriver();
+        WebDriver localDriver = driver;
+
+        if (localDriver == null) {
+//            synchronized (Driver.class) {
+            localDriver = driver;
+            if (localDriver == null) {
+                if (reader.getBrowserName().equalsIgnoreCase("chrome")) {
+                    System.setProperty(CHROME_PROPERTY, CHROME_PATH);
+                    driver = new ChromeDriver();
+                } else if (reader.getBrowserName().equalsIgnoreCase("firefox")) {
+                    System.setProperty(FIREFOX_PROPERTY, FIREFOX_PATH);
+                    driver = new FirefoxDriver();
+                    driver.get("http://seleniumhq.com");
+                } else if (reader.getBrowserName().equalsIgnoreCase("explorer")) {
+                    System.setProperty(EXPLORER_PROPERTY, EXPLORER_PATH);
+                    driver = new InternetExplorerDriver();
+                } else {
+                    System.out.println("driver details are not specified in the Configuration.properties file");
+                    driver = new EdgeDriver();
+                }
+            }
+
+//            }
         }
-//        }
         return driver;
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    public static void quit(){
+        driver.quit();
+        driver=null;
     }
 }

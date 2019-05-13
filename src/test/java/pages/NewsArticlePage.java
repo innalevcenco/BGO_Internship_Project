@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import steps.CommentNewsPaperSteps;
 
-public class NewsArticlePage extends CommonActions {
-    public WebDriver driver = StepHooks.getDriver();
+public class NewsArticlePage {
+    public WebDriver driver = Driver.getDriver();
 
     private static final String COMMENT_TEXTFIELD_BY_CLASS="comment-form__textarea";
     private static final String SEND_COMMENT_BUTTON_BY_CLASS="comment-form__button-label";
