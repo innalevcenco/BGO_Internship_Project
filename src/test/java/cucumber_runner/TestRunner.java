@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features"},
 //        tags = {"@functional"},
-//        tags = {"@acastravet"},
+        tags = {"@acastravet"},
 //        tags = {"@aciuvaga"},
-        tags = {"@ilevcenco"},
+     //   tags = {"@ilevcenco"},
         plugin = {"pretty",
                 "html:target/selenium-reports",
                 "json:target/json/output.json",

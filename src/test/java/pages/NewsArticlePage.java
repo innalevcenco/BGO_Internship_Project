@@ -1,13 +1,12 @@
 package pages;
 
 import browser.Driver;
-import hooks.StepHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NewsArticlePage {
-    public WebDriver driver = Driver.getDriver();
+public class NewsArticlePage extends CommonActions {
 
+    public WebDriver driver = Driver.getDriver();
     private static final String COMMENT_TEXTFIELD_BY_CLASS="comment-form__textarea";
     private static final String SEND_COMMENT_BUTTON_BY_CLASS="comment-form__button-label";
     public void addComment(String text){
@@ -22,6 +21,7 @@ public class NewsArticlePage {
         if (word.length()>0){
             return true;
         }else{
+            log.error("Title is not present");
             return false;
         }
     }

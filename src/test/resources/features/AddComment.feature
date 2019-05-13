@@ -1,8 +1,8 @@
-@functional
-Feature: Add comment to a news article
+@test
+Feature: Add comment to the movie
 
   Background:
-    Given user is login on 'https://www.kinopoisk.ru/' with 'ariadnaciuvaga' username and 'abc12345' password
+    Given user is login on 'https://www.kinopoisk.ru/' with 'alexandrugrama' username and 'cablu21' password
 
   @acastravet
   Scenario:Comment on a news article

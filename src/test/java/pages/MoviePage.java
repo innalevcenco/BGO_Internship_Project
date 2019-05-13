@@ -53,35 +53,33 @@ public class MoviePage extends CommonActions {
     }
 
 
-    public boolean checkIfMovieAddedToFavouriteList() {
-        String headerMovie1 = driver.findElement(By.xpath(MoviePage.getMovieTitle())).getText();
-        driver.findElement(By.xpath(getFavoritesListButton())).click();
+    public boolean checkIfMovieAddedToFavouriteList(){
+        String headerMovie1= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
+        driver.findElement(By.xpath(FAVORITES_LIST_BUTTON)).click();
         waitVisibility(FavouriteMoviePage.getFirstMovieFromList());
         driver.findElement(By.xpath(FavouriteMoviePage.getFirstMovieFromList())).click();
-        waitVisibility(getMovieTitle());
+        waitVisibility(MOVIE_TITLE);
 
-        String headerMovie2 = driver.findElement(By.xpath(getMovieTitle())).getText();
+        String headerMovie2=driver.findElement(By.xpath(getMovieTitle())).getText();
 
-        if (headerMovie1.equals(headerMovie2)) {
+        if (headerMovie1.equals(headerMovie2)){
             return true;
-        } else {
+        }else{
             return false;
         }
     }
 
-    public boolean checkIfMovieAddedToWatchLaterList() {
-        driver.navigate().refresh();
-        waitSpecificAmountOfTime(4);
-
-        String headerMovie1 = driver.findElement(By.xpath(MOVIE_TITLE)).getText();
+    public boolean checkIfMovieAddedToWatchLaterList(){
+        String headerMovie1= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
         click(WATCH_LATER_LIST_BUTTON);
         click(WillWatchFolderPage.getFirstMovieFromList());
         waitVisibility(MOVIE_TITLE);
-        String headerMovie2 = driver.findElement(By.xpath(MOVIE_TITLE)).getText();
+        String headerMovie2= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
 
-        if (headerMovie1.equals(headerMovie2)) {
+        if (headerMovie1.equals(headerMovie2)){
             return true;
-        } else {
+        }else{
+            log.error("movie is not the same, probably it was not added to list");
             return false;
         }
     }

@@ -1,20 +1,20 @@
 package commonActions;
 
 import browser.Driver;
+import logger.LoggerConfig;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.assertTrue;
 
-public abstract class CommonActions {
+public abstract class CommonActions extends LoggerConfig {
 
     public WebDriver driver = Driver.getDriver();
 
