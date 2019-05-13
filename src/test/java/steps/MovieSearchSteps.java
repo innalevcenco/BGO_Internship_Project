@@ -4,40 +4,37 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import pages.CommonActions;
+import commonActions.CommonActions;
 import pages.HomePage;
 import pages.MoviePage;
-import pages.MovieSearchResultPages;
+import pages.MovieSearchResultPage;
 
 public class MovieSearchSteps extends CommonActions {
-    public String movieTitle = "";
-    MovieSearchResultPages movieSearchResultPages;
 
     @Then("^search results are displayed$")
     public void searchresultsAreDisplayed() {
-        String currentURL = MovieSearchResultPages.getFirstDisplayedMovie();
+        String currentURL = MovieSearchResultPage.getFirstDisplayedMovie();
         Assert.assertNotEquals(currentURL, "");
     }
 
     @And("^user clicks on the first link$")
     public void userChoosesFirstLink() {
-        click(MovieSearchResultPages.getFirstDisplayedMovie());
+        click(MovieSearchResultPage.getFirstDisplayedMovie());
     }
 
     @When("^user saves the title of the first displayed movie$")
-    public void userSavesThTitleOfTheFirstDisplayedMovie() {
-        movieTitle = getText(movieSearchResultPages.getFirstDisplayedMovieTitle());
+    public void userSavesTheTitleOfTheFirstDisplayedMovie() {
+        getText(MovieSearchResultPage.getFirstDisplayedMovieTitle());
     }
 
     @When("^user clicks on 'Will watch' button from movie page$")
-    public void addMovieIntoWillWatchButtonFromMofiePage() {
+    public void addMovieIntoWillWatchButtonFromMoviePage() {
         click(MoviePage.getWatchLaterButton());
     }
 
     @Then("^movie details are displayed$")
     public void movieDetailsAreDisplayed() {
         Assert.assertEquals("", "");
-
     }
 
     @And("^user clicks on 'Movies' button$")

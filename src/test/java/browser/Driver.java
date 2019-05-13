@@ -7,7 +7,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-
 public class Driver {
 
     private static final String CHROME_PROPERTY = "webdriver.chrome.driver";
@@ -18,13 +17,11 @@ public class Driver {
     private static final String FIREFOX_PATH = "src/test/resources/drivers/geckodriver.exe";
     private static WebDriver driver;
 
-
-    public Driver() {
+    private Driver() {
     }
 
     public static WebDriver initializeDriver() {
         ConfigFileReader reader = new ConfigFileReader();
-//        if (driver == null) {
         if (reader.getBrowserName().equalsIgnoreCase("chrome")) {
             System.setProperty(CHROME_PROPERTY, CHROME_PATH);
             driver = new ChromeDriver();
@@ -39,7 +36,6 @@ public class Driver {
             System.out.println("driver details are not specified in the Configuration.properties file");
             driver = new EdgeDriver();
         }
-//        }
         return driver;
     }
 }

@@ -1,8 +1,6 @@
 package pages;
-//*[@id="film_799494"]/div[4]/a
-//*[@id="film_465543"]/div[4]/a
 
-public class MovieSearchResultPages {
+public class MovieSearchResultPage {
     private static final String FIRST_DISPLAYED_MOVIE = "//*[@id='block_left_pad']/div/div[2]/div/div[2]/p/a";
     private static final String FIRST_DISPLAYED_MOVIE_TITLE = "//*[@id='film_535341']/div[4]/span[1]";
     private static final String MOVIE_NOTE_BUTTON = "//*[@id='viewFilmInfoWrapper']/ul[1]/li[3]";
