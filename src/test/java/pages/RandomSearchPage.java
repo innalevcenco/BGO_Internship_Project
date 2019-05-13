@@ -64,6 +64,7 @@ public class RandomSearchPage extends CommonActions {
         if (text.length()>0){
             return true;
         }else{
+            log.error("movie was not found");
             return false;
         }
     }

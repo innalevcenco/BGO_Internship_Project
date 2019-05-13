@@ -1,6 +1,7 @@
 package pages;
 
 import hooks.StepHooks;
+import logger.LoggerConfig;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.assertTrue;
 
-public abstract class CommonActions {
+public abstract class CommonActions extends LoggerConfig {
 
     public WebDriver driver = StepHooks.getDriver();
 //    public WebDriverWait wait;
@@ -65,6 +66,7 @@ public abstract class CommonActions {
         if (driver.getPageSource().contains(element)){
             return true;
         }else{
+            log.error("page is not containing '"+element+"' word");
             return false;
         }
     }

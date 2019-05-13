@@ -20,11 +20,11 @@ public class MoviePage extends CommonActions{
 
 
     public boolean checkIfMovieAddedToFavouriteList(){
-        String headerMovie1= driver.findElement(By.xpath(MoviePage.getMovieTitle())).getText();
-        driver.findElement(By.xpath(getFavoritesListButton())).click();
+        String headerMovie1= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
+        driver.findElement(By.xpath(FAVORITES_LIST_BUTTON)).click();
         waitVisibility(FavouriteMoviePage.getFirstMovieFromList());
         driver.findElement(By.xpath(FavouriteMoviePage.getFirstMovieFromList())).click();
-        waitVisibility(getMovieTitle());
+        waitVisibility(MOVIE_TITLE);
 
         String headerMovie2=driver.findElement(By.xpath(getMovieTitle())).getText();
 
@@ -48,6 +48,7 @@ public class MoviePage extends CommonActions{
         if (headerMovie1.equals(headerMovie2)){
             return true;
         }else{
+            log.error("movie is not the same, probably it was not added to list");
             return false;
         }
     }

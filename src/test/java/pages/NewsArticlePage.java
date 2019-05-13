@@ -3,8 +3,9 @@ package pages;
 import hooks.StepHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import steps.CommentNewsPaperSteps;
 
-public class NewsArticlePage {
+public class NewsArticlePage extends CommonActions {
     public WebDriver driver = StepHooks.getDriver();
 
     private static final String ARTICLE_TITLE_BY_CLASS="media-post-title_theme_desktop media-news__title";
@@ -28,6 +29,7 @@ public class NewsArticlePage {
         if (word.length()>0){
             return true;
         }else{
+            log.error("Title is not present");
             return false;
         }
     }

@@ -1,4 +1,3 @@
-@test
 Feature: Add comment to the movie
 
   Background:
@@ -24,7 +23,7 @@ Feature: Add comment to the movie
 #    And user clicks on 'alexandrugrama' button
 #    Then the new comment is displayed on the customer account
 
-
+#  @test
 #  Scenario:Comment on a news article
 #    Given user accesses news page
 #    And user clicks on a date from the calendar
