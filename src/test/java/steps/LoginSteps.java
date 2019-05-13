@@ -1,15 +1,13 @@
 package steps;
 
+import browser.Driver;
 import cucumber.api.java.en.Given;
-import hooks.StepHooks;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 
 public class LoginSteps {
 
-    StepHooks stepHooks = new StepHooks();
-
-    private WebDriver driver = stepHooks.getDriver();
+    private WebDriver driver = Driver.getDriver();
     private LoginPage loginPage = new LoginPage(driver);
 
     @Given("^user is login on '(.*)' with '(.*)' username and '(.*)' password$")

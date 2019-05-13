@@ -34,8 +34,8 @@ public class AdvancedFilterSteps extends CommonActions {
 
     @And("^user select '(.*)' country")
     public void userSelectsCountry(String country) {
-        click(AdvancedFilterPage.getCountryFiled());
-        Select select = new Select(driver.findElement(By.xpath(AdvancedFilterPage.getCountryFiled())));
+        click(AdvancedFilterPage.getCountryField());
+        Select select = new Select(driver.findElement(By.xpath(AdvancedFilterPage.getCountryField())));
         select.selectByVisibleText(country);
     }
 
