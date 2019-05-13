@@ -17,6 +17,7 @@ public class AdvancedFilterSteps extends CommonActions {
     public void userClicksOnAdvancedFilterButton() {
         click(HomePage.getAdvancedSearchButton());
         System.out.println("User clicks on search button");
+
     }
 
     @Then("^'Advanced filter' page is displayed$")
@@ -24,6 +25,7 @@ public class AdvancedFilterSteps extends CommonActions {
         waitVisibility(AdvancedFilterPage.getActorField());
         assertEqualsURL(AdvancedFilterPage.getAdvancedSearchPageUrl(), driver.getCurrentUrl());
         System.out.println("Advanced filter page is displayed");
+        log.info("gfg");
     }
 
     @When("^user fills field with '(.*)' name")

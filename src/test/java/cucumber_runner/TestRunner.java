@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features"},
 //        tags = {"@functional"},
         tags = {"@acastravet"},
-//        tags = {"@aciuvaga"},
+      // tags = {"@aciuvaga"},
      //   tags = {"@ilevcenco"},
         plugin = {"pretty",
                 "html:target/selenium-reports",

@@ -17,14 +17,8 @@ public abstract class CommonActions extends LoggerConfig {
     public WebDriver driver = Driver.getDriver();
 //    public WebDriverWait wait;
 
-    //TODO like driver
-    public WebDriverWait wait = new WebDriverWait(driver, 15);
 
-//    //Constructor
-//    public CommonActions(WebDriver driver, WebDriverWait wait) {
-//        this.driver = driver;
-//        this.wait = wait;
-//    }
+    public WebDriverWait wait = new WebDriverWait(driver, 15);
 
     //Wait Wrapper Method
     public void waitVisibility(String elementBy) {

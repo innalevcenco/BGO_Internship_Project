@@ -3,6 +3,7 @@ package steps;
 import browser.Driver;
 import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
+import pages.CommonActions;
 import pages.LoginPage;
 
 public class LoginSteps {
@@ -18,5 +19,6 @@ public class LoginSteps {
         loginPage.buttonClick(loginPage.usernameEnterButton());
         loginPage.setPassword(password);
         loginPage.buttonClick(loginPage.passwordEnterButton());
+
     }
 }

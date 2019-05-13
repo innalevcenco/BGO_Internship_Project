@@ -17,6 +17,7 @@ public class HomeSteps extends CommonActions {
         waitVisibility(HomePage.getLogOutButton());
         assertEqualsURL(HomePage.getHomePage(), driver.getCurrentUrl());
         System.out.println("Home page is displayed");
+
     }
 
     @When("^user clicks on 'Search' button$")
