@@ -21,14 +21,12 @@ public class RandomSearchPage extends CommonActions {
     private static final String FIND_MOVIE_BUTTON="//*[@id='search']";
     private static final String FOUND_MOVIE_TITLE="//*[@id='page']/div[3]/div[3]/div/div[2]/div[1]/div[1]/a";
 
-
     public static String getFoundMovieTitle() { return FOUND_MOVIE_TITLE; }
     public static String getChooseCountry() { return CHOOSE_COUNTRY; }
     public static String getChooseGenre() { return CHOOSE_GENRE; }
     public static String getLeftArrow() { return LEFT_ARROW; }
     public static String getRightArrow() { return RIGHT_ARROW; }
     public static String getFindMovieButton() { return FIND_MOVIE_BUTTON; }
-
 
     public String generateRandomCountry(){
         int randomCountry= new Random().nextInt(20)+1;
@@ -68,10 +66,4 @@ public class RandomSearchPage extends CommonActions {
             return false;
         }
     }
-
-
-
-
-
-
 }

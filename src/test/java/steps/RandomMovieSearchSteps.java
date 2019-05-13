@@ -79,5 +79,4 @@ public class RandomMovieSearchSteps extends CommonActions{
         log.info("the movie is added to favourite list");
     }
 
-
 }

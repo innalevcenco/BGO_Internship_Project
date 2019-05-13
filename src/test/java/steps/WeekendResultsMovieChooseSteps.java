@@ -58,6 +58,4 @@ public class WeekendResultsMovieChooseSteps extends CommonActions {
         log.info("movie is added to watch later list");
 
     }
-
-
 }
