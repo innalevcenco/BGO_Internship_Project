@@ -5,9 +5,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import logger.LoggerConfig;
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 import pages.*;
 
 public class CommentNewsPaperSteps extends CommonActions {

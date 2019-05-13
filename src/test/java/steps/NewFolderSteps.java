@@ -1,8 +1,7 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import commonActions.CommonActions;
-import pages.MoviePage;
+import cucumber.api.java.en.And;
 import pages.NewFolderPage;
 
 import java.util.concurrent.TimeUnit;

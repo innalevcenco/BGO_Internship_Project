@@ -1,15 +1,14 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import commonActions.CommonActions;
 import pages.HomePage;
 import pages.RandomSearchPage;
 import pages.MoviePage;
-import pages.RandomSearchPage;
 
-public class RandomMovieSearchSteps extends CommonActions{
+public class RandomMovieSearchSteps extends CommonActions {
 
     private RandomSearchPage randomSearchPage = new RandomSearchPage();
     private MoviePage moviePage= new MoviePage();

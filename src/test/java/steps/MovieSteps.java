@@ -1,9 +1,9 @@
 package steps;
 
+import commonActions.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import commonActions.CommonActions;
 import org.junit.Assert;
 import pages.MoviePage;
 import pages.MovieSearchResultPage;
