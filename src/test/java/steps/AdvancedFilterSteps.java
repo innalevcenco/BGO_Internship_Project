@@ -16,22 +16,20 @@ public class AdvancedFilterSteps extends CommonActions {
     @When("^user clicks on 'Advanced Filter' button$")
     public void userClicksOnAdvancedFilterButton() {
         click(HomePage.getAdvancedSearchButton());
-        System.out.println("User clicks on search button");
-
+        log.info("User clicks Advanced Filter button");
     }
 
     @Then("^'Advanced filter' page is displayed$")
     public void advancedFilterPageIsDisplayed() {
         waitVisibility(AdvancedFilterPage.getActorField());
         assertEqualsURL(AdvancedFilterPage.getAdvancedSearchPageUrl(), driver.getCurrentUrl());
-        System.out.println("Advanced filter page is displayed");
-        log.info("gfg");
+        log.info("Advanced filter page is displayed");
     }
 
     @When("^user fills field with '(.*)' name")
     public void userFillsActorFieldWithActorName(String text) {
         writeText(AdvancedFilterPage.getActorField(), text);
-        System.out.println("Actor is entered");
+        log.info("Actor is entered");
     }
 
     @And("^user select '(.*)' country")
@@ -39,13 +37,14 @@ public class AdvancedFilterSteps extends CommonActions {
         click(AdvancedFilterPage.getCountryField());
         Select select = new Select(driver.findElement(By.xpath(AdvancedFilterPage.getCountryField())));
         select.selectByVisibleText(country);
+        log.info("The specified country is displayed");
     }
 
     @And("^user enters '(.*)' year$")
     public void userEntersYear(String year) {
         writeText(AdvancedFilterPage.getYearField(), year);
         Assert.assertTrue(isTextPresent(year));
-        System.out.println("Year is entered");
+        log.info("Year is entered");
     }
 
     @And("^user clicks on the 'Search' button$")
@@ -63,24 +62,30 @@ public class AdvancedFilterSteps extends CommonActions {
     @When("^user chooses 'an option' from option field$")
     public void chooseAnOption() {
         click(AdvancedFilterPage.getComedyOptionField2());
+        log.info("An option from option field is displayed");
     }
 
     @And("^user clicks on the checkbox$")
     public void userClicksOnCheckbox() {
         click(AdvancedFilterPage.getComedyOptionField2());
+        log.info("Checkbox is clicked");
     }
 
     @When("^user clicks on 'genre' field$")
     public void clicksOnGenreField() {
         click(AdvancedFilterPage.getGenreField());
+        log.info("Genre field is clicked");
     }
 
     @And("^user clicks on 'Note' button$")
     public void clickNoteButton() {
         click(MovieSearchResultPage.getMovieNoteButton());
+        log.info("Note button is clicked");
     }
 
     @And("^user clicks on 'Save' note button$")
     public void userClicksOnSaveNoteButton() {
-        click(MovieSearchResultPage.getSaveNoteButton()); }
+        click(MovieSearchResultPage.getSaveNoteButton());
+        log.info("Save note button is clicked");
+    }
 }

@@ -16,33 +16,37 @@ public class HomeSteps extends CommonActions {
     public void verificationLocation() {
         waitVisibility(HomePage.getLogOutButton());
         assertEqualsURL(HomePage.getHomePage(), driver.getCurrentUrl());
-        System.out.println("Home page is displayed");
-
+        log.info("Home page is displayed");
     }
 
     @When("^user clicks on 'Search' button$")
     public void userClicksOnMovieButton() {
         click(HomePage.getRandSearchButton());
+        log.info("Search button is clicked");
     }
 
     @When("^user clicks on profile button$")
     public void userClicksOnProfileButton() {
         click(HomePage.getMyProfileButton());
+        log.info("Profile button is clicked");
     }
 
     @When("^user clicks on 'Will watch' button$")
     public void userClicksOnWillWatchButton() {
         click(HomePage.getWillWatchButton());
+        log.info("Will watch button is clicked");
+    }
+
+
+    @And("^user clicks on the 'HomeSearch' button$")
+    public void userClicksOnTheHomeSearchButton() {
+        click(HomePage.getSearchButton());
+        log.info("Search button is clicked");
     }
 
     @When("^user searches for '(.*)'$")
     public void user_searches_for_movie(String text) {
         writeText(HomePage.getSearchField(), text);
-        System.out.println("User searches for");
-    }
-
-    @And("^user clicks on the 'HomeSearch' button$")
-    public void userClicksOnTheHomeSearchButton() {
-        click(HomePage.getSearchButton());
+        log.info("Search information are displayed");
     }
 }

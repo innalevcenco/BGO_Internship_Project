@@ -15,26 +15,25 @@ public class MovieSearchSteps extends CommonActions {
     public void searchresultsAreDisplayed() {
         String currentURL = MovieSearchResultPage.getFirstDisplayedMovie();
         Assert.assertNotEquals(currentURL, "");
+        log.info("Search results are displayed");
     }
 
     @And("^user clicks on the first link$")
     public void userChoosesFirstLink() {
         click(MovieSearchResultPage.getFirstDisplayedMovie());
+        log.info("First link is displayed");
     }
 
     @When("^user saves the title of the first displayed movie$")
     public void userSavesTheTitleOfTheFirstDisplayedMovie() {
         getText(MovieSearchResultPage.getFirstDisplayedMovieTitle());
+        log.info("The title of the first displayed movie is displayed");
     }
 
     @When("^user clicks on 'Will watch' button from movie page$")
     public void addMovieIntoWillWatchButtonFromMoviePage() {
         click(MoviePage.getWatchLaterButton());
-    }
-
-    @Then("^movie details are displayed$")
-    public void movieDetailsAreDisplayed() {
-        Assert.assertEquals("", "");
+        log.info("'Will watch' button from movie page is displayed");
     }
 
     @And("^user clicks on 'Movies' button$")

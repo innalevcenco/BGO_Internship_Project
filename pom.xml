@@ -99,7 +99,6 @@
             <artifactId>webdriver-expected-conditions</artifactId>
             <version>1.0.52</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>

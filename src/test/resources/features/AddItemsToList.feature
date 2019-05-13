@@ -54,12 +54,3 @@ Feature: Add items in the lists
       | actor         |
       | Jeremy Renner |
       | Hugh Laurie   |
-
-
-
-
-
-
-
-
-

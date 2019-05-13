@@ -16,7 +16,7 @@ public class MessagesSteps extends CommonActions {
     @When("^user clicks on 'Logo' button$")
     public void userClicksOnLogoButton() {
         click(HomePage.getLogOutButton());
-        System.out.println("Button 'Logo' is clicked");
+        log.info("Button 'Logo' is clicked");
     }
 
     @Then("^dropdown list is displayed$")
