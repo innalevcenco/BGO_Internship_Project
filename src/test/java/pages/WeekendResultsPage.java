@@ -1,11 +1,12 @@
 package pages;
 
+import browser.Driver;
 import hooks.StepHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class WeekendResultsPage {
-    public WebDriver driver = StepHooks.getDriver();
+    public WebDriver driver = Driver.getDriver();
 
     private static final String RESULTS_IN_DOLLARS ="//*[@id=\"block_left\"]/div/table[1]/tbody/tr[4]/td/table[1]/tbody/tr[12]/td[2]/table/tbody/tr[1]/td/a";
     private static final String FILTER_BY_ALL_FUNDS="//*[@id=\"block_left\"]/div/table[1]/tbody/tr[4]/td/table[1]/tbody/tr[1]/td[5]/b/a";

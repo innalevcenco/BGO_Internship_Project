@@ -1,11 +1,12 @@
 package pages;
 
+import browser.Driver;
 import hooks.StepHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class NewsArticlePage {
-    public WebDriver driver = StepHooks.getDriver();
+    public WebDriver driver = Driver.getDriver();
 
     private static final String COMMENT_TEXTFIELD_BY_CLASS="comment-form__textarea";
     private static final String SEND_COMMENT_BUTTON_BY_CLASS="comment-form__button-label";
