@@ -1,4 +1,4 @@
-@test
+@functional
 Feature: Add comment to the movie
 
   Background:
@@ -32,4 +32,3 @@ Feature: Add comment to the movie
     Examples:
       | country | note                         |
       | Россия  | I will watch this film later |
-

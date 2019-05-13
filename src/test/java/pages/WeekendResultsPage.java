@@ -1,6 +1,7 @@
 package pages;
 
 import browser.Driver;
+import commonActions.CommonActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

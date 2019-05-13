@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features"},
 //        tags = {"@functional"},
-        tags = {"@acastravet"},
-//        tags = {"@aciuvaga"},
+//        tags = {"@acastravet"},
+        tags = {"@aciuvaga"},
      //   tags = {"@ilevcenco"},
         plugin = {"pretty",
                 "html:target/selenium-reports",
