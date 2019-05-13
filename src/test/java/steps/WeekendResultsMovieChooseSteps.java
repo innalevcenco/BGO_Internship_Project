@@ -50,6 +50,7 @@ public class WeekendResultsMovieChooseSteps extends CommonActions {
     @Then("^movie is added to watch later$")
     public void movieIsAddedToWatchLater(){
         refresh();
+        waitSpecificAmountOfTime(5);
         boolean exists= moviePage.checkIfMovieAddedToWatchLaterList();
         assertIsTrue("Step failed: movie was not added to watch later list ",exists);
         log.info("movie is added to watch later list");

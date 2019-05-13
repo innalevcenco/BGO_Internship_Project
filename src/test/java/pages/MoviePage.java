@@ -69,12 +69,9 @@ public class MoviePage extends CommonActions {
     }
 
     public boolean checkIfMovieAddedToWatchLaterList(){
-//        driver.navigate().refresh();
-//        waitSpecificAmountOfTime(4);
-
         String headerMovie1= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
         click(WATCH_LATER_LIST_BUTTON);
-        click(WatchLaterMoviePage.getFirstMovieFromList());
+        click(WillWatchFolderPage.getFirstMovieFromList());
         waitVisibility(MOVIE_TITLE);
         String headerMovie2= driver.findElement(By.xpath(MOVIE_TITLE)).getText();
 

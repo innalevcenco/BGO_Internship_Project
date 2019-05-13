@@ -45,13 +45,13 @@ public class RandomMovieSearchSteps extends CommonActions{
 
     @Then("^user clicks on random movie search button$")
     public void userClicksOnTheSearchButton() {
+        waitSpecificAmountOfTime(5);
         randomSearchPage.clickFindMovieButton();
         log.info("user clicks on random movie search button");
     }
 
     @Then("^movie is displayed$")
     public void movieIsDisplayed() {
-
         waitVisibility(randomSearchPage.getFoundMovieTitle());
         boolean exists= randomSearchPage.isMovieFound();
         assertIsTrue("Step failed: Movie was not found",exists);
